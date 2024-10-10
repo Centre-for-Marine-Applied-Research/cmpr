@@ -23,5 +23,5 @@ connect_to_db <- function(connection_config = "default") {
                    dbname = db_config$dbname)
 }
 # Close database connection
-#DBI::dbDisconnect(con)
+#DBI::dbDisconnect(conn)
 

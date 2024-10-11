@@ -67,7 +67,6 @@ import_depl_metadata <- function() {
     filter(!(waterbody %in% waterbody_list$waterbody))
 
   if(nrow(invalid_waterbody_entries) > 0) {
-    print(as.integer(rownames(invalid_waterbody_entries)))
     stop(paste0("Invalid waterbody found in metadata sheet for ",
                 invalid_waterbody_entries$waterbody,
                 " at row ",
@@ -82,7 +81,6 @@ import_depl_metadata <- function() {
     filter(!(station %in% station_list$station))
 
   if(nrow(invalid_station_entries) > 0) {
-    print(as.integer(rownames(invalid_station_entries)))
     stop(paste0("Invalid station found in metadata sheet for ",
                 invalid_station_entries$station,
                 " at row ",

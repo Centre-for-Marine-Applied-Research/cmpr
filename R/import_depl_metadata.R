@@ -1,7 +1,12 @@
-library(readxl)
-library(dplyr)
-source("R/helpers.R")
-
+#' Import Deployment Metadata
+#'
+#' @return data.frame metadata sheet
+#' @export
+#' @importFrom readxl read_excel
+#' @import dplyr
+#'
+#' @examples
+#' import_depl_metadata()
 import_depl_metadata <- function() {
   path <- "R:/tracking_sheets/metadata_tracking/water_quality_deployment_tracking.xlsx"
   col_types <- c("date", #last_updated_date
@@ -44,7 +49,7 @@ import_depl_metadata <- function() {
   )
 
   tryCatch({
-    metadata_sheet <- read_excel(path, col_types = col_types)
+    metadata_sheet <- readxl::read_excel(path, col_types = col_types)
     },
     # Stop execution in case of warnings in read_excel
     # This is important to properly manage datatypes
@@ -64,7 +69,7 @@ import_depl_metadata <- function() {
   waterbody_list <- read_excel(path, sheet = "waterbody_list")
 
   invalid_waterbody_entries <- metadata_sheet %>%
-    filter(!(waterbody %in% waterbody_list$waterbody))
+    filter(!(.data$waterbody %in% waterbody_list$waterbody))
 
   if(nrow(invalid_waterbody_entries) > 0) {
     stop(paste0("Invalid waterbody found in metadata sheet for ",
@@ -78,7 +83,7 @@ import_depl_metadata <- function() {
   station_list <- read_excel(path, sheet = "station_list")
 
   invalid_station_entries <- metadata_sheet %>%
-    filter(!(station %in% station_list$station))
+    filter(!(.data$station %in% station_list$station))
 
   if(nrow(invalid_station_entries) > 0) {
     stop(paste0("Invalid station found in metadata sheet for ",
@@ -87,5 +92,5 @@ import_depl_metadata <- function() {
                 invalid_station_entries$row_index,
                 "\n"))
   }
-
+  metadata_sheet
 }

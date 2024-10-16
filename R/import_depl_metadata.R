@@ -1,14 +1,17 @@
 #' Import Deployment Metadata
 #'
+#' @param filepath location of the metadata tracking sheet Excel file
+#'
 #' @return data.frame metadata sheet
 #' @export
 #' @importFrom readxl read_excel
 #' @import dplyr
 #'
 #' @examples
-#' import_depl_metadata()
-import_depl_metadata <- function() {
-  path <- "R:/tracking_sheets/metadata_tracking/water_quality_deployment_tracking.xlsx"
+#' try(
+#'   import_depl_metadata("./extdata/water_quality_deployment_tracking.xlsx")
+#' )
+import_depl_metadata <- function(filepath) {
   col_types <- c("date", #last_updated_date
                  "text", #station
                  "text", #waterbody
@@ -49,7 +52,7 @@ import_depl_metadata <- function() {
   )
 
   tryCatch({
-    metadata_sheet <- readxl::read_excel(path, col_types = col_types)
+    metadata_sheet <- readxl::read_excel(filepath, col_types = col_types)
     },
     # Stop execution in case of warnings in read_excel
     # This is important to properly manage datatypes
@@ -66,7 +69,7 @@ import_depl_metadata <- function() {
   metadata_sheet$row_index = rownames(metadata_sheet)
 
   # Confirm valid waterbody values
-  waterbody_list <- read_excel(path, sheet = "waterbody_list")
+  waterbody_list <- read_excel(filepath, sheet = "waterbody_list")
 
   invalid_waterbody_entries <- metadata_sheet %>%
     filter(!(.data$waterbody %in% waterbody_list$waterbody))
@@ -80,7 +83,7 @@ import_depl_metadata <- function() {
   }
 
   # Confirm valid station values
-  station_list <- read_excel(path, sheet = "station_list")
+  station_list <- read_excel(filepath, sheet = "station_list")
 
   invalid_station_entries <- metadata_sheet %>%
     filter(!(.data$station %in% station_list$station))

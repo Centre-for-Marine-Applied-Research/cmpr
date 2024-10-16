@@ -4,7 +4,10 @@
 \alias{import_depl_metadata}
 \title{Import Deployment Metadata}
 \usage{
-import_depl_metadata()
+import_depl_metadata(filepath)
+}
+\arguments{
+\item{filepath}{location of the metadata tracking sheet Excel file}
 }
 \value{
 data.frame metadata sheet
@@ -13,5 +16,7 @@ data.frame metadata sheet
 Import Deployment Metadata
 }
 \examples{
-import_depl_metadata()
+try(
+  import_depl_metadata("./extdata/water_quality_deployment_tracking.xlsx")
+)
 }

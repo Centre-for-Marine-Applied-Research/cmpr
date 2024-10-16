@@ -13,6 +13,7 @@ Imports:
     config,
     DBI,
     dplyr,
+    lubridate,
     readxl,
     RPostgres,
     stringr

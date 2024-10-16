@@ -2,19 +2,20 @@
 % Please edit documentation in R/helpers.R
 \name{parse_time_from_excel}
 \alias{parse_time_from_excel}
-\title{Parse time from date time}
+\title{Parse time from POSIXct}
 \usage{
 parse_time_from_excel(x)
 }
 \arguments{
-\item{x}{datetime string in YYYY-MM-DD HH:MM:SS format}
+\item{x}{POSIXct value}
 }
 \value{
 string representing a time in the format HH:MM:SS
 }
 \description{
-Parse time from date time
+Parse time from POSIXct
 }
 \examples{
-parse_time_from_excel("2024-10-10 10:00:00")
+datetime_from_excel <- as.POSIXct("2024-10-10 10:00:00")
+parse_time_from_excel(datetime_from_excel)
 }

@@ -7,7 +7,7 @@
 parse_time_from_excel(x)
 }
 \arguments{
-\item{x}{POSIXct value}
+\item{x}{POSIXct value or vector of POSIXct values}
 }
 \value{
 string representing a time in the format HH:MM:SS

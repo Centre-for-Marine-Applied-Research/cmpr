@@ -4,8 +4,8 @@
 #'
 #' @return data.frame metadata sheet
 #' @export
-#' @importFrom readxl read_excel
 #' @import dplyr
+#' @importFrom readxl read_excel
 #'
 #' @examples
 #' try(
@@ -15,6 +15,7 @@ import_depl_metadata <- function(filepath) {
   col_types <- c("date", #last_updated_date
                  "text", #station
                  "text", #waterbody
+                 "text", #county
                  "text", #lease
                  "text", #status
                  "date", #deployment_date
@@ -41,6 +42,8 @@ import_depl_metadata <- function(filepath) {
                  "text", #primary_buoy_type
                  "text", #secondary_buoy_type
                  "text", #bottom_buoy_type
+                 "text", #whalesafe link type
+                 "numeric", #whalesafe link number
                  "text", #anchor_type
                  "numeric", #anchor_weight_kg
                  "text", #biofouling_prevention
@@ -52,14 +55,20 @@ import_depl_metadata <- function(filepath) {
   )
 
   tryCatch({
-    metadata_sheet <- readxl::read_excel(filepath, col_types = col_types)
-    },
-    # Stop execution in case of warnings in read_excel
-    # This is important to properly manage datatypes
-    warning = function(w) {
-      stop(paste0("Warning in reading deployment metadata tracking sheet:\n", w$message, "\n", ""))
-    }
-  )
+    metadata_sheet <- readxl::read_excel(
+      filepath,
+      sheet = "tracker",
+      col_types = col_types
+    )
+  }, # Stop execution in case of warnings in read_excel
+  # This is important to properly manage datatypes
+  warning = function(w) {
+    stop(paste0(
+      "Warning in reading deployment metadata tracking sheet:\n",
+      w$message,
+      "\n"
+    ))
+  })
 
   # Reformat time columns
   metadata_sheet <- metadata_sheet %>%

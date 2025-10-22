@@ -69,6 +69,9 @@ import_depl_metadata <- function(filepath) {
       "\n"
     ))
   })
+  # Remove any rows where waterbody is 0 (absence of XLOOKUP so no data)
+  metadata_sheet <- metadata_sheet %>%
+    filter(waterbody != 0)
 
   # Reformat time columns
   metadata_sheet <- metadata_sheet %>%
@@ -78,10 +81,11 @@ import_depl_metadata <- function(filepath) {
   metadata_sheet$row_index = rownames(metadata_sheet)
 
   # Confirm valid waterbody values
-  waterbody_list <- read_excel(filepath, sheet = "waterbody_list")
+  station_waterbody_county_list <- read_excel(filepath, sheet = "station_waterbody_county")
+  waterbody_list <- unique(station_waterbody_county_list$waterbody)
 
   invalid_waterbody_entries <- metadata_sheet %>%
-    filter(!(.data$waterbody %in% waterbody_list$waterbody))
+    filter(!(metadata_sheet$waterbody %in% waterbody_list))
 
   if(nrow(invalid_waterbody_entries) > 0) {
     stop(paste0("Invalid waterbody found in metadata sheet for ",
@@ -92,10 +96,10 @@ import_depl_metadata <- function(filepath) {
   }
 
   # Confirm valid station values
-  station_list <- read_excel(filepath, sheet = "station_list")
+  station_list <- unique(station_waterbody_county_list$station)
 
   invalid_station_entries <- metadata_sheet %>%
-    filter(!(.data$station %in% station_list$station))
+    filter(!(metadata_sheet$station %in% station_list))
 
   if(nrow(invalid_station_entries) > 0) {
     stop(paste0("Invalid station found in metadata sheet for ",

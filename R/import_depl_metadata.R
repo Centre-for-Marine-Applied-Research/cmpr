@@ -69,9 +69,13 @@ import_depl_metadata <- function(filepath) {
       "\n"
     ))
   })
-  # Remove any rows where waterbody is 0 (absence of XLOOKUP so no data)
+  # Remove any rows where:
   metadata_sheet <- metadata_sheet %>%
+  # all values are NA
+    filter(rowSums(is.na(metadata_sheet)) != ncol(metadata_sheet)) %>%
+  # waterbody is 0 (absence of XLOOKUP so no data)
     filter(waterbody != 0)
+
 
   # Reformat time columns
   metadata_sheet <- metadata_sheet %>%
@@ -108,5 +112,5 @@ import_depl_metadata <- function(filepath) {
                 invalid_station_entries$row_index,
                 "\n"))
   }
-  metadata_sheet
+  metadata_sheet %>% select(-row_index)
 }

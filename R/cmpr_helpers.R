@@ -9,11 +9,15 @@
 #'
 #' @examples
 #' datetime_from_excel <- as.POSIXct("2024-10-10 10:00:00")
-#' parse_time_from_excel(datetime_from_excel)
-parse_time_from_excel <- function(x) {
+#' cmpr_parse_time_from_excel(datetime_from_excel)
+cmpr_parse_time_from_excel <- function(x) {
   # check POSIXct is provided
   if (!is.POSIXct(x)) {
-    stop("Error in parsing datetime value ", x, ". Ensure value is provided as POSIXct type.")
+    stop(
+      "Error in parsing datetime value ",
+      x,
+      ". Ensure value is provided as POSIXct type."
+    )
   }
   x <- x %>%
     as.character() %>%
@@ -22,8 +26,10 @@ parse_time_from_excel <- function(x) {
   # check time format is correct for non-NA values
   if (any(!is.na(x) & !grepl("[0-9]{2}:[0-9]{2}:[0-9]{2}", x))) {
     problem_values <- x[!grepl("[0-9]{2}:[0-9]{2}:[0-9]{2}", x)]
-    stop("Parsing resulted in unexpected format, not matching 'HH:MM:SS': ",
-         paste(unique(problem_values), collapse = ", "))
+    stop(
+      "Parsing resulted in unexpected format, not matching 'HH:MM:SS': ",
+      paste(unique(problem_values), collapse = ", ")
+    )
   }
   x
 }

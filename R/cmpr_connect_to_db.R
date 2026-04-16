@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' db_conn <- try(connect_to_db())
-connect_to_db <- function(connection_config = "default") {
+cmpr_connect_to_db <- function(connection_config = "default") {
   # Get configuration file with database connection details
   db_config <- config::get(config = connection_config)
 

@@ -1,5 +1,8 @@
-library(cmpr)
+#library(cmpr)
+devtools::load_all()
 
-cmpdb_conn <- cmpr_connect_to_db()
+conn <- cmpr_connect_to_db(connection_config = "admin")
 
-cmpr_get_station_data(cmpdb_conn)
+station_data <- cmpr_get_station_data(conn)
+
+DBI::dbDisconnect(conn)

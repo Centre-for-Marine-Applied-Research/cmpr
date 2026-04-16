@@ -15,13 +15,14 @@ connect_to_db <- function(connection_config = "default") {
   db_config <- config::get(config = connection_config)
 
   # Initialize database connection
-  conn <- DBI::dbConnect(RPostgres::Postgres(),
-                   user = db_config$user,
-                   password = db_config$password,
-                   host = db_config$host,
-                   port = db_config$port,
-                   dbname = db_config$dbname)
+  conn <- DBI::dbConnect(
+    RPostgres::Postgres(),
+    user = db_config$user,
+    password = db_config$password,
+    host = db_config$host,
+    port = db_config$port,
+    dbname = db_config$dbname
+  )
 }
 # Close database connection
 #DBI::dbDisconnect(conn)
-

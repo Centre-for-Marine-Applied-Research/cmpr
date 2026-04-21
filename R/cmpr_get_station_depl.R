@@ -1,6 +1,7 @@
-#' Get list of CMP stations
+#' Get list of deployments at a given station
 #'
 #' @param conn database connection object
+#' @param station_name name of station
 #'
 #' @returns data frame of all of the deployments from a station
 #' @export
@@ -44,8 +45,19 @@ cmpr_get_station_depl <- function(conn, station_name) {
   dbClearResult(res)
 
   # Clean up types and columns
-  # depl_table <- depl_table |>
-  #   mutate(across(contains("name"), ~ as.character(.x))) |>
-  #   mutate(station_classification = as.character(station_classification))
+  depl_table <- depl_table |>
+    mutate(across(contains("name"), ~ as.character(.x))) |>
+    mutate(across(
+      c(
+        depl_status,
+        string_config,
+        acoustic_release,
+        biofouling_prevention,
+        datum,
+        photos_taken,
+        depth_crosscheck_flag
+      ),
+      ~ as.character(.x)
+    ))
   depl_table
 }

@@ -13,8 +13,10 @@ Imports:
     config,
     DBI,
     dplyr,
+    glue,
     lubridate,
     readxl,
+    rlang,
     RPostgres,
     stringr
 Suggests: 

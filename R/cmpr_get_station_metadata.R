@@ -8,7 +8,7 @@
 #' @importFrom DBI dbSendQuery
 #' @importFrom dplyr mutate
 #'
-cmpr_get_station_data <- function(conn) {
+cmpr_get_station_metadata <- function(conn) {
   # Retrieve station data from database, including waterbody, county, and province
   res <- DBI::dbSendQuery(
     conn,

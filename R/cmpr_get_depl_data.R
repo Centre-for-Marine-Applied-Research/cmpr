@@ -67,12 +67,13 @@ cmpr_get_depl_data <- function(
   }
 
   # Queries are constructed using paste0 since sending them to the DB requires a "string" object not a "glue" object
+  # TODO: please keep values?!?!?
   query <-
     paste0(
       "WITH ",
       selected_depl_cte,
       selected_var_cte,
-      "SELECT station_name, depl_date, retrieval_date, sensor_serial_num, sensor_depth_m, variable_type, variable_name 
+      "SELECT station_name, depl_date, retrieval_date, sensor_serial_num, sensor_depth_m, variable_type, variable_name, variable_value
       FROM SelectedDeployment
       LEFT JOIN sensorstring.sensor_depl_measurement
       ON SelectedDeployment.depl_id = sensor_depl_measurement.depl_id
@@ -91,7 +92,9 @@ cmpr_get_depl_data <- function(
 
   # Clean up types and columns
   depl_table <- depl_table |>
-    mutate(across(contains("name"), ~ as.character(.x))) |>
-    mutate(variable_type = as.character(variable_type))
+    mutate(
+      across(contains("name"), ~ as.character(.x)),
+      variable_type = as.character(variable_type)
+    )
   depl_table
 }

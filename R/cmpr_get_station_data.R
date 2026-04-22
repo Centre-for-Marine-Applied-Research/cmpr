@@ -1,7 +1,7 @@
 #' Get measurement data from a specific CMP deployment
 #'
 #' @param conn database connection object
-#' @param station_name name of the station
+#' @param station_name name of the station(s)
 #' @param variable_type type of variable to filter the data for, excludes use of variable_name
 #' @param variable_name name of variable to filter the data for, excludes use of variable_type
 #'
@@ -27,8 +27,10 @@ cmpr_get_station_data <- function(
   }
   # TODO: ensure date parses correctly
   # TODO: ensure variable type is valid
+  selected_station_list_string <-
+    paste(glue::glue("'{station_name}'"), collapse = ", ")
 
-  # Construct CTE for selected station
+  # Construct CTE for selected stations
   selected_station_cte <- glue::glue(
     "SelectedStation AS (
       SELECT ss_station.station_id, ss_station.station_name, ss_depl.depl_id, depl_date, retrieval_date, sensor_depth_m
@@ -37,7 +39,8 @@ cmpr_get_station_data <- function(
       ON ss_depl.station_id = ss_station.station_id
       LEFT JOIN sensorstring.sensor_depl
       ON ss_depl.depl_id = sensor_depl.depl_id
-      WHERE station_name = '{station_name}')"
+      WHERE station_name IN ({selected_station_list_string})
+      )"
   )
 
   # Construct CTE for selected variable type or name

@@ -14,7 +14,7 @@ cmpr_get_station_data(
 \arguments{
 \item{conn}{database connection object}
 
-\item{station_name}{name of the station}
+\item{station_name}{name of the station(s)}
 
 \item{variable_type}{type of variable to filter the data for, excludes use of variable_name}
 

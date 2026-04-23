@@ -1,44 +1,44 @@
 test_that("error message is produced if invalid date is provided", {
-  test_metadata_df <- import_depl_metadata(paste0(
-    system.file("testdata", package = "cmpdb"),
+  test_metadata_df <- cmpr_import_depl_metadata(paste0(
+    system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking.xlsx"
   ))
   test_last_update_date <- "this literally cannot be converted to a date"
   expect_error(
-    filter_depl_metadata(test_metadata_df, test_last_update_date),
+    cmpr_filter_depl_metadata(test_metadata_df, test_last_update_date),
     regexp = "Warning in parsing last_update_date:"
   )
 })
 
 test_that("metadata sheet is not filtered if no date is provided", {
-  test_metadata_df <- import_depl_metadata(paste0(
-    system.file("testdata", package = "cmpdb"),
+  test_metadata_df <- cmpr_import_depl_metadata(paste0(
+    system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking.xlsx"
   ))
   test_last_update_date <- NULL
-  test_metadata_df <- filter_depl_metadata(
+  test_metadata_df <- cmpr_filter_depl_metadata(
     test_metadata_df,
     test_last_update_date
   )
-  expected_metadata_df <- import_depl_metadata(paste0(
-    system.file("testdata", package = "cmpdb"),
+  expected_metadata_df <- cmpr_import_depl_metadata(paste0(
+    system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking.xlsx"
   ))
-    expect_equal(test_metadata_df, expected_metadata_df)
+  expect_equal(test_metadata_df, expected_metadata_df)
 })
 
 test_that("metadata sheet is correctly filtered based on provided date", {
-  test_metadata_df <- import_depl_metadata(paste0(
-    system.file("testdata", package = "cmpdb"),
+  test_metadata_df <- cmpr_import_depl_metadata(paste0(
+    system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking.xlsx"
   ))
   test_last_update_date <- "2025-10-10"
-  test_metadata_df <- filter_depl_metadata(
+  test_metadata_df <- cmpr_filter_depl_metadata(
     test_metadata_df,
     test_last_update_date
   )
-  expected_metadata_df <- import_depl_metadata(paste0(
-    system.file("testdata", package = "cmpdb"),
+  expected_metadata_df <- cmpr_import_depl_metadata(paste0(
+    system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking_filtered.xlsx"
   ))
   expect_equal(test_metadata_df, expected_metadata_df)

@@ -49,4 +49,4 @@ po/*~
 rsconnect/
 
 # Config files
-**/config.yml
+config.yml

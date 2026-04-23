@@ -34,8 +34,6 @@ cmpr_get_station_metadata <- function(conn) {
   dbClearResult(res)
 
   # Clean up types and columns
-  station_table <- station_table |>
-    mutate(across(contains("name"), ~ as.character(.x))) |>
-    mutate(station_classification = as.character(station_classification))
-  station_table
+  # Clean up custom enum types
+  return(cmpr_clean_enum_types(station_table))
 }

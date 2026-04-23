@@ -44,22 +44,6 @@ cmpr_get_station_depl <- function(conn, station_name) {
   depl_table <- dbFetch(res)
   dbClearResult(res)
 
-  # Clean up types and columns
-  depl_table <- depl_table |>
-    mutate(
-      across(contains("name"), ~ as.character(.x)),
-      across(
-        c(
-          depl_status,
-          string_config,
-          acoustic_release,
-          biofouling_prevention,
-          datum,
-          photos_taken,
-          depth_crosscheck_flag
-        ),
-        ~ as.character(.x)
-      )
-    )
-  depl_table
+  # Clean up custom enum types
+  return(cmpr_clean_enum_types(depl_table))
 }

@@ -87,14 +87,9 @@ cmpr_get_station_data <- function(
     query
   )
 
-  depl_table <- DBI::dbFetch(res)
+  station_table <- DBI::dbFetch(res)
   DBI::dbClearResult(res)
 
-  # Clean up types and columns
-  depl_table <- depl_table |>
-    mutate(
-      across(contains("name"), ~ as.character(.x)),
-      variable_type = as.character(variable_type)
-    )
-  depl_table
+  # Clean up custom enum types
+  return(cmpr_clean_enum_types(station_table))
 }

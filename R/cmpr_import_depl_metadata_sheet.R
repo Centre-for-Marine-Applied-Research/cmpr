@@ -7,11 +7,7 @@
 #' @import dplyr
 #' @importFrom readxl read_excel
 #'
-#' @examples
-#' try(
-#'   import_depl_metadata("./extdata/water_quality_deployment_tracking.xlsx")
-#' )
-cmpr_import_depl_metadata <- function(filepath) {
+cmpr_import_depl_metadata_sheet <- function(filepath) {
   col_types <- c(
     "date", #last_updated_date
     "text", #station

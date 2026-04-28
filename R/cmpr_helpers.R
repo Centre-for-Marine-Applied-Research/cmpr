@@ -38,25 +38,26 @@ cmpr_parse_time_from_excel <- function(x) {
 #'
 #' @return vector of strings which list the columns which are custom PostgreSQL types
 cmpr_list_enum_columns <- function() {
-  return
-  c(
-    "county_name",
-    "province_name",
-    "station_classification",
-    "flag_value",
-    "qc_summary_flag",
-    "depth_crosscheck_flag",
-    "sensor_depl_status",
-    "depl_status",
-    "string_config",
-    "acoustic_release",
-    "biofouling_prevention",
-    "potential_tampering",
-    "datum",
-    "photos_taken",
-    "depl_tide_direction",
-    "variable_type",
-    "variable_units"
+  return(
+    c(
+      "county_name",
+      "province_name",
+      "station_classification",
+      "flag_value",
+      "qc_summary_flag",
+      "depth_crosscheck_flag",
+      "sensor_depl_status",
+      "depl_status",
+      "string_config",
+      "acoustic_release",
+      "biofouling_prevention",
+      "potential_tampering",
+      "datum",
+      "photos_taken",
+      "depl_tide_direction",
+      "variable_type",
+      "variable_units"
+    )
   )
 }
 

@@ -73,7 +73,7 @@ cmpr_get_station_data <- function(
       "WITH ",
       selected_station_cte,
       selected_var_cte,
-      "SELECT station_name, depl_date, retrieval_date, sensor_serial_num, sensor_depth_m, variable_type, variable_name, variable_value
+      "SELECT station_name, depl_date, retrieval_date, sensor_serial_num, sensor_depth_m, timestamp_utc, variable_type, variable_name, variable_value
       FROM SelectedStation
       LEFT JOIN sensorstring.sensor_depl_measurement
       ON SelectedStation.depl_id = sensor_depl_measurement.depl_id

@@ -12,7 +12,7 @@ station_depls <- cmpr_get_station_depl(conn, station_name = "Jewers Bay")
 # Get all the data from a given station
 station_data <- cmpr_get_station_data(
   conn,
-  station_name = c("Wedgeport", "Jewers Bay", "Tickle Island"),
+  station_name = "Eddy Cove",
   variable_type = "temperature"
 )
 

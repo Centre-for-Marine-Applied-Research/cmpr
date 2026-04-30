@@ -73,7 +73,7 @@ cmpr_get_depl_data <- function(
       "WITH ",
       selected_depl_cte,
       selected_var_cte,
-      "SELECT station_name, depl_date, retrieval_date, sensor_depth_m, sensor_depl_measurement.sensor_serial_num, timestamp_utc, variable_type, variable_name, variable_value
+      "SELECT station_name, depl_date, retrieval_date, sensor_depth_m, sensor_depl_measurement.sensor_serial_num, timestamp_utc, variable_type, variable_name, variable_value, qc_summary_flag
       FROM SelectedDeployment
       LEFT JOIN sensorstring.sensor_depl_measurement
       ON SelectedDeployment.depl_id = sensor_depl_measurement.depl_id
@@ -92,6 +92,9 @@ cmpr_get_depl_data <- function(
   DBI::dbClearResult(res)
 
   # Clean up types and columns
-  # Clean up custom enum types
-  return(cmpr_clean_enum_types(depl_table))
+  depl_table <- depl_table |>
+    cmpr_clean_enum_types() |>
+    cmpr_convert_to_ss_cols()
+
+  return(depl_table)
 }

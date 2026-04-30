@@ -34,6 +34,9 @@ cmpr_get_station_metadata <- function(conn) {
   dbClearResult(res)
 
   # Clean up types and columns
-  # Clean up custom enum types
-  return(cmpr_clean_enum_types(station_table))
+  station_table <- station_table |>
+    cmpr_clean_enum_types() |>
+    cmpr_convert_to_ss_cols()
+
+  return(station_table)
 }

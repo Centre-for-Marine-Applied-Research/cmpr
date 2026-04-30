@@ -44,6 +44,10 @@ cmpr_get_station_depl <- function(conn, station_name) {
   depl_table <- dbFetch(res)
   dbClearResult(res)
 
-  # Clean up custom enum types
-  return(cmpr_clean_enum_types(depl_table))
+  # Clean up types and columns
+  depl_table <- depl_table |>
+    cmpr_clean_enum_types() |>
+    cmpr_convert_to_ss_cols()
+
+  return(depl_table)
 }

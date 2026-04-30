@@ -92,6 +92,9 @@ cmpr_get_depl_data <- function(
   DBI::dbClearResult(res)
 
   # Clean up types and columns
-  # Clean up custom enum types
-  return(cmpr_clean_enum_types(depl_table))
+  depl_table <- depl_table |>
+    cmpr_clean_enum_types() |>
+    cmpr_convert_to_ss_cols()
+
+  return(depl_table)
 }

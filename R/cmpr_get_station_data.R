@@ -91,6 +91,10 @@ cmpr_get_station_data <- function(
   station_table <- DBI::dbFetch(res)
   DBI::dbClearResult(res)
 
-  # Clean up custom enum types
-  return(cmpr_clean_enum_types(station_table))
+  # Clean up types and columns
+  station_table <- station_table |>
+    cmpr_clean_enum_types() |>
+    cmpr_convert_to_ss_cols()
+
+  return(station_table)
 }

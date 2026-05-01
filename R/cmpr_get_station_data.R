@@ -1,11 +1,11 @@
 #' Get measurement data from a specific CMP deployment
 #'
-#' @param conn database connection object
-#' @param station_name name of the station(s)
-#' @param variable_type type of variable to filter the data for, excludes use of variable_name
-#' @param variable_name name of variable to filter the data for, excludes use of variable_type
+
+#' @param station_name character vectors of the name of the station(s) of interest.
+#' @inheritParams cmpr_get_depl_data
 #'
-#' @returns data frame of data measured over the course of a deployment
+#' @returns data frame of the specified variable measured at the specified
+#'   station(s).
 #' @export
 #'
 #' @importFrom glue glue

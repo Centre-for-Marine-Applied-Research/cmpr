@@ -1,12 +1,15 @@
 #' Update Deployment Metadata
 #'
-#' @param conn database connection object
-#' @param filepath location of the metadata tracking sheet Excel file
+#' @inheritParams cmpr_get_depl_data
+#' @param filepath location of the metadata tracking sheet Excel file, including
+#'   file name and extension.
 #'
-#' @returns
+#' @returns tbd
 #' @export
-#' @import lubridate
 #'
+#' @importFrom dplyr select
+
+
 cmpr_update_depl_metadata <- function(conn, filepath) {
   # Retrieve metadata tracking sheet
   metadata_sheet <- cmpr_import_depl_metadata_sheet(filepath)
@@ -29,7 +32,7 @@ cmpr_update_depl_metadata <- function(conn, filepath) {
   #     }
   #   )
 
-  #   metadata_sheet <- metadata_sheet %>%
+  #   metadata_sheet <- metadata_sheet |>
   #     filter(last_updated_date > last_update_date)
   # }
 
@@ -65,7 +68,7 @@ cmpr_update_depl_metadata <- function(conn, filepath) {
   # primary_buoy_type
   # secondary_buoy_type
   # bottom_buoy_type
-  ssdepl <- metadata_sheet %>%
+  ssdepl <- metadata_sheet |>
     select(
       station, #station_name
       status, #depl_status
@@ -86,7 +89,7 @@ cmpr_update_depl_metadata <- function(conn, filepath) {
       photos_taken, #photos_taken
       notes #depl_notes
     )
-  ssdefaultlog <- metadata_sheet %>%
+  ssdefaultlog <- metadata_sheet |>
     select(
       station, #station_name
       deployment_date, #depl_date

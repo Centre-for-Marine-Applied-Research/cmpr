@@ -1,13 +1,19 @@
 #' Filter Deployment Metadata by Date
 #'
-#' @param metadata_df data frame of metadata
+#' @param metadata_df data frame of sensor string deployment metadata. Must
+#'   include column \code{last_updated_date}.
+#'
 #' @param last_update_date date when the database was last updated from the
-#'    metadata tracking sheet
+#'   metadata tracking sheet, in yyyy-mm-dd format.
 #'
-#' @returns
+#' @returns Returns rows of \code{metadata_df} that were updated after
+#'   \code{last_update_date}.
+#'
 #' @export
-#' @import lubridate
 #'
+#' @importFrom dplyr filter mutate
+#' @importFrom lubridate as_date
+
 cmpr_filter_depl_metadata <- function(metadata_df, last_update_date = NULL) {
   # Filter for entries since last update if NULL date, keep all
   if (!is.null(last_update_date)) {
@@ -26,7 +32,7 @@ cmpr_filter_depl_metadata <- function(metadata_df, last_update_date = NULL) {
       }
     )
 
-    metadata_df <- metadata_df %>%
+    metadata_df <- metadata_df |>
       filter(last_updated_date > last_update_date)
   }
   metadata_df

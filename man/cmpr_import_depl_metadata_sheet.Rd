@@ -7,10 +7,11 @@
 cmpr_import_depl_metadata_sheet(filepath)
 }
 \arguments{
-\item{filepath}{location of the metadata tracking sheet Excel file}
+\item{filepath}{location of the metadata tracking sheet Excel file, include
+file name and extension.}
 }
 \value{
-data.frame metadata sheet
+data frame of the deployment metadata sheet
 }
 \description{
 Import Deployment Metadata

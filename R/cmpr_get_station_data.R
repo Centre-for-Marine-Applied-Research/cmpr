@@ -14,6 +14,7 @@
 #' @importFrom DBI dbFetch
 #' @importFrom DBI dbClearResult
 #' @importFrom dplyr mutate
+#' @importFrom stringr str_to_title
 #'
 cmpr_get_station_data <- function(
   conn,
@@ -94,7 +95,8 @@ cmpr_get_station_data <- function(
   # Clean up types and columns
   station_table <- station_table |>
     cmpr_clean_enum_types() |>
-    cmpr_convert_to_ss_cols()
+    cmpr_convert_to_ss_cols() |>
+    mutate(qc_flag_value = str_to_title(qc_flag_value))
 
   return(station_table)
 }

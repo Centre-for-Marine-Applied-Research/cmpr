@@ -104,11 +104,13 @@ cmpr_get_ss_cmpdb_col_mapping <- function(mode) {
       latitude = "station_latitude",
       longitude = "station_longitude",
       classification = "station_classification",
+      sensor_serial_number = "sensor_serial_num",
       sensor_depth_at_low_tide_m = "sensor_depth_m",
       variable = "variable_name",
       value = "variable_value",
       string_configuration = "string_config",
-      sensor_type = "sensor_model"
+      sensor_type = "sensor_model",
+      qc_flag_value = "qc_summary_flag"
     )
   if (mode == "forward") {
     return(forward)

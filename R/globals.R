@@ -17,6 +17,7 @@ utils::globalVariables(
     "notes",
     "photos_taken",
     "primary_buoy_type",
+    "qc_flag_value",
     "retrieval_attendant",
     "retrieval_date",
     "retrieval_latitude",

@@ -1,0 +1,34 @@
+
+utils::globalVariables(
+  c(
+    "acoustic_release",
+    "anchor_type",
+    "anchor_weight_kg",
+    "biofouling_prevention",
+    "bottom_buoy_type",
+    "datum",
+    "deployment_attendant",
+    "deployment_date",
+    "deployment_latitude",
+    "deployment_longitude",
+    "deployment_tide_direction",
+    "deployment_time_utc",
+    "last_updated_date",
+    "notes",
+    "photos_taken",
+    "primary_buoy_type",
+    "retrieval_attendant",
+    "retrieval_date",
+    "retrieval_latitude",
+    "retrieval_longitude",
+    "retrieval_time_utc",
+    "row_index",
+    "secondary_buoy_type",
+    "sounding_m", "station",
+    "status",
+    "string_configuration",
+    "tide_correction_m",
+    "vr2ar_lug_height_above_seafloor_m",
+    "waterbody"
+  )
+)

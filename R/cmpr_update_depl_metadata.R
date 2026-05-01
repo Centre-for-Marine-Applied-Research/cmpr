@@ -6,32 +6,43 @@
 #' @returns
 #' @export
 #' @import lubridate
+#' @importFrom DBI dbSendQuery
 #'
 cmpr_update_depl_metadata <- function(conn, filepath) {
   # Retrieve metadata tracking sheet
+  #filepath <- "R:/tracking_sheets/metadata_tracking/water_quality_deployment_tracking.xlsx"
   metadata_sheet <- cmpr_import_depl_metadata_sheet(filepath)
+
   # Retrieve most recently updated date from the database
+  res <- DBI::dbSendQuery(
+    conn,
+    "SELECT * FROM public.data_import_log
+    WHERE data_name = 'ns_wq_metadata'
+    ORDER BY import_date ASC
+    LIMIT 1;"
+  )
+  data_import_table <- DBI::dbFetch(res)
+  last_db_update_date <- data_import_table |> dplyr::pull(import_date)
+  #last_db_update_date <- "2024-01-01"
 
-  # Filter for entries since last update (if NULL, just keep all?)
-  # if (!is.null(last_update_date)) {
-  #   # Check date format
-  #   tryCatch(
-  #     {
-  #       last_update_date <- lubridate::as_date(last_update_date)
-  #     }, # Stop execution in case of warnings in as_date
-  #     # This is important to properly manage datatypes
-  #     warning = function(w) {
-  #       stop(paste0(
-  #         "Warning in parsing last_update_date:\n",
-  #         w$message,
-  #         "\n"
-  #       ))
-  #     }
-  #   )
+  tryCatch(
+    {
+      last_db_update_date <- lubridate::as_date(last_db_update_date)
+    },
+    # Stop execution in case of warnings in date parsing - this needs to be fixed
+    warning = function(w) {
+      stop(paste0(
+        "Warning in parsing last_db_update_date:\n",
+        w$message,
+        "\n"
+      ))
+    }
+  )
 
-  #   metadata_sheet <- metadata_sheet %>%
-  #     filter(last_updated_date > last_update_date)
-  # }
+  metadata_sheet <- metadata_sheet %>%
+    filter(last_updated_date > last_db_update_date)
+
+  cmpr_validate_metadata_sheet(conn, metadata_sheet)
 
   # Split up into relevant database tables: SSDepl and SSDefaultLog
   # SSDepl:

@@ -4,15 +4,12 @@
 \alias{cmpr_update_depl_metadata}
 \title{Update Deployment Metadata}
 \usage{
-cmpr_update_depl_metadata(conn, filepath, last_update_date = NULL)
+cmpr_update_depl_metadata(conn, filepath)
 }
 \arguments{
 \item{conn}{database connection object}
 
 \item{filepath}{location of the metadata tracking sheet Excel file}
-
-\item{last_update_date}{date when the database was last updated from the
-metadata tracking sheet}
 }
 \description{
 Update Deployment Metadata

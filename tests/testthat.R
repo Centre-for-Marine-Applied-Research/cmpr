@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(cmpdb)
+library(cmpr)
 
-test_check("cmpdb")
+test_check("cmpr")

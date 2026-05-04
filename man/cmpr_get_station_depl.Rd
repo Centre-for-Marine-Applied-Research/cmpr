@@ -7,7 +7,7 @@
 cmpr_get_station_depl(conn, station_name)
 }
 \arguments{
-\item{conn}{database connection object}
+\item{conn}{database connection object.}
 
 \item{station_name}{name of station}
 }

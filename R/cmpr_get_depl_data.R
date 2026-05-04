@@ -1,12 +1,23 @@
 #' Get measurement data from a specific CMP deployment
 #'
-#' @param conn database connection object
-#' @param station_name name of the station where the relevant deployment is located
-#' @param depl_date deployment date of the station
-#' @param variable_type type of variable to filter the data for, excludes use of variable_name
-#' @param variable_name name of variable to filter the data for, excludes use of variable_type
+#' @param conn database connection object.
+#' @param station_name character string indicating the station of interest.
+#' @param depl_date string indicating the deployment of interest, in the order
+#'   yyyy-mm-dd. This must match a deployment start date for one of the
+#'   deployments at \code{station}.
+#' @param variable_type type of variable to extract. Must be one of
+#'   "dissolved_oxygen", "salinity", "sensor_depth_measured", or "temperature".
+#'   This is useful for extracting dissolved oxygen data measured in both units.
+#'   If \code{variable_type} is specified, \code{variable_name} must be
+#'   \code{NULL}.
+#' @param variable_name name of variable to extract. Must be one of:
+#'   "dissolved_oxygen_percent_saturation", "dissolved_oxygen_mg_per_l",
+#'   "salinity_psu", "sensor_depth_measured_m", or "temperature_degree_c". If
+#'   \code{variable_name} is specified, \code{variable_type} must be
+#'   \code{NULL}.
 #'
-#' @returns data frame of data measured over the course of a deployment
+#' @returns data frame of the specified variable measured over the specified
+#'   station deployment.
 #' @export
 #'
 #' @importFrom glue glue

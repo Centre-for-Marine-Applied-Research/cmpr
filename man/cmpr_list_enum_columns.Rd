@@ -2,13 +2,14 @@
 % Please edit documentation in R/cmpr_helpers.R
 \name{cmpr_list_enum_columns}
 \alias{cmpr_list_enum_columns}
-\title{Get a list of columns which are custom PostgreSQL types}
+\title{Columns in the CMPDB that are custom PostgreSQL types}
 \usage{
 cmpr_list_enum_columns()
 }
 \value{
-vector of strings which list the columns which are custom PostgreSQL types
+vector of strings listing columns in the CMPDB that are custom
+PostgreSQL types.
 }
 \description{
-Get a list of columns which are custom PostgreSQL types
+Columns in the CMPDB that are custom PostgreSQL types
 }

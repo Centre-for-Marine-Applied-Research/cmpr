@@ -1,11 +1,11 @@
 #' Get measurement data from a specific CMP deployment
 #'
-#' @param conn database connection object
-#' @param station_name name of the station(s)
-#' @param variable_type type of variable to filter the data for, excludes use of variable_name
-#' @param variable_name name of variable to filter the data for, excludes use of variable_type
+
+#' @param station_name character vectors of the name of the station(s) of interest.
+#' @inheritParams cmpr_get_depl_data
 #'
-#' @returns data frame of data measured over the course of a deployment
+#' @returns data frame of the specified variable measured at the specified
+#'   station(s).
 #' @export
 #'
 #' @importFrom glue glue
@@ -14,6 +14,7 @@
 #' @importFrom DBI dbFetch
 #' @importFrom DBI dbClearResult
 #' @importFrom dplyr mutate
+#' @importFrom stringr str_to_title
 #'
 cmpr_get_station_data <- function(
   conn,
@@ -94,7 +95,8 @@ cmpr_get_station_data <- function(
   # Clean up types and columns
   station_table <- station_table |>
     cmpr_clean_enum_types() |>
-    cmpr_convert_to_ss_cols()
+    cmpr_convert_to_ss_cols() |>
+    mutate(qc_flag_value = str_to_title(qc_flag_value))
 
   return(station_table)
 }

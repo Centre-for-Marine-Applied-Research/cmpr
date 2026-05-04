@@ -38,7 +38,7 @@ cmpr_update_depl_metadata <- function(conn, filepath) {
     }
   )
 
-  metadata_sheet <- metadata_sheet %>%
+  metadata_sheet <- metadata_sheet |>
     filter(last_updated_date > last_db_update_date)
 
   cmpr_validate_metadata_sheet(conn, metadata_sheet)
@@ -75,7 +75,7 @@ cmpr_update_depl_metadata <- function(conn, filepath) {
   # primary_buoy_type
   # secondary_buoy_type
   # bottom_buoy_type
-  ssdepl <- metadata_sheet %>%
+  ssdepl <- metadata_sheet |>
     select(
       station, #station_name
       status, #depl_status
@@ -96,7 +96,7 @@ cmpr_update_depl_metadata <- function(conn, filepath) {
       photos_taken, #photos_taken
       notes #depl_notes
     )
-  ssdefaultlog <- metadata_sheet %>%
+  ssdefaultlog <- metadata_sheet |>
     select(
       station, #station_name
       deployment_date, #depl_date

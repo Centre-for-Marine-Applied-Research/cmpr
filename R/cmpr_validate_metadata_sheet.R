@@ -1,3 +1,13 @@
+#' Validate metadata sheet
+#'
+#' @param conn database connection object
+#' @param metadata_sheet data frame of metadata pulled from the CMP metadata tracking sheet
+#'
+#' @returns NA
+#'
+#' @importFrom glue glue
+#' @importFrom dplyr filter
+#' @importFrom dplyr pull
 cmpr_validate_metadata_sheet <- function(
   conn,
   metadata_sheet

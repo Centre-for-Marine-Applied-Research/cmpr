@@ -8,7 +8,7 @@
 #'   station(s).
 #' @export
 #'
-#' @importFrom glue glue
+#' @importFrom glue glue_sql
 #' @importFrom rlang as_string
 #' @importFrom DBI dbSendQuery
 #' @importFrom DBI dbFetch
@@ -29,10 +29,10 @@ cmpr_get_station_data <- function(
   # TODO: ensure date parses correctly
   # TODO: ensure variable type is valid
   selected_station_list_string <-
-    paste(glue::glue("'{station_name}'"), collapse = ", ")
+    paste(glue::glue_sql("'{station_name}'"), collapse = ", ")
 
   # Construct CTE for selected stations
-  selected_station_cte <- glue::glue(
+  selected_station_cte <- glue::glue_sql(
     "SelectedStation AS (
       SELECT ss_station.station_id, ss_station.station_name, ss_depl.depl_id, depl_date, retrieval_date, sensor_depth_m, sensor_serial_num
       FROM sensorstring.ss_depl
@@ -46,7 +46,7 @@ cmpr_get_station_data <- function(
 
   # Construct CTE for selected variable type or name
   if (is.null(variable_type) & is.null(variable_name)) {
-    selected_var_cte <- glue::glue(
+    selected_var_cte <- glue::glue_sql(
       ", SelectedVariable AS (
       SELECT *
       FROM sensorstring.ss_variable)"
@@ -59,7 +59,7 @@ cmpr_get_station_data <- function(
       var_selection_val <- variable_type
       var_selection_col <- "variable_type"
     }
-    selected_var_cte <- glue::glue(
+    selected_var_cte <- glue::glue_sql(
       ", SelectedVariable AS (
       SELECT *
       FROM sensorstring.ss_variable

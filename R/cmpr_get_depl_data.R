@@ -20,7 +20,7 @@
 #'   station deployment.
 #' @export
 #'
-#' @importFrom glue glue
+#' @importFrom glue glue_sql
 #' @importFrom rlang as_string
 #' @importFrom DBI dbSendQuery
 #' @importFrom DBI dbFetch
@@ -42,7 +42,7 @@ cmpr_get_depl_data <- function(
   # TODO: ensure variable type is valid
 
   # Construct CTE for selected deployment
-  selected_depl_cte <- glue::glue(
+  selected_depl_cte <- glue::glue_sql(
     "SelectedDeployment AS (
       SELECT ss_station.station_id, ss_station.station_name, ss_depl.depl_id, depl_date, retrieval_date, sensor_depth_m, sensor_serial_num
       FROM sensorstring.ss_depl
@@ -56,7 +56,7 @@ cmpr_get_depl_data <- function(
 
   # Construct CTE for selected variable type or name
   if (is.null(variable_type) & is.null(variable_name)) {
-    selected_var_cte <- glue::glue(
+    selected_var_cte <- glue::glue_sql(
       ", SelectedVariable AS (
       SELECT *
       FROM sensorstring.ss_variable)"
@@ -69,7 +69,7 @@ cmpr_get_depl_data <- function(
       var_selection_val <- variable_type
       var_selection_col <- "variable_type"
     }
-    selected_var_cte <- glue::glue(
+    selected_var_cte <- glue::glue_sql(
       ", SelectedVariable AS (
       SELECT *
       FROM sensorstring.ss_variable

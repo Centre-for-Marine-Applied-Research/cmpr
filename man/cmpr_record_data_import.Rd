@@ -7,7 +7,11 @@
 cmpr_record_data_import(conn, data_name, notes = "")
 }
 \arguments{
-\item{conn}{}
+\item{conn}{database connection object}
+
+\item{data_name}{name of the data being imported}
+
+\item{notes}{text with any additional notes about the data import process}
 }
 \description{
 Write a new data import record and submit it to the CMPDB

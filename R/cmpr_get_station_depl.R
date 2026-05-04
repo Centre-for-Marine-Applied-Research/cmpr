@@ -6,11 +6,11 @@
 #' @returns data frame of all of the deployments from a station
 #' @export
 #'
-#' @importFrom DBI dbClearResult dbFetch dbSendQuery
+#' @importFrom DBI dbGetQuery
 
 cmpr_get_station_depl <- function(conn, station_name) {
   # Retrieve deployment information for the given station
-  res <- DBI::dbSendQuery(
+  depl_table <- DBI::dbGetQuery(
     conn,
     paste0(
       "SELECT station_name,
@@ -40,8 +40,6 @@ cmpr_get_station_depl <- function(conn, station_name) {
       "';"
     )
   )
-  depl_table <- dbFetch(res)
-  dbClearResult(res)
 
   # Clean up types and columns
   depl_table <- depl_table |>

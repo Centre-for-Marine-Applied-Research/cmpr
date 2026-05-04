@@ -10,5 +10,10 @@ cmpr_record_data_import <- function(conn, data_name, notes = "") {
     VALUES ('{data_name}', '{import_date}', '{notes}');"
   )
 
-  res <- DBI::dbSendQuery(conn, query)
+  num_affected_rows <- DBI::dbExecute(conn, query)
+  if (num_affected_rows != 1) {
+    stop(
+      "Error: number of rows other than 1 affected. This function should only affect a single row. Please contact the database administrator."
+    )
+  }
 }

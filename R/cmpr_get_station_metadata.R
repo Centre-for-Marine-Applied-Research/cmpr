@@ -5,11 +5,11 @@
 #' @returns data frame of all stations with their deloyment dates and locations.
 #' @export
 #'
-#' @importFrom DBI dbClearResult dbFetch dbSendQuery
+#' @importFrom DBI dbGetQuery
 #'
 cmpr_get_station_metadata <- function(conn) {
   # Retrieve station data from database, including waterbody, county, and province
-  res <- DBI::dbSendQuery(
+  station_table <- DBI::dbGetQuery(
     conn,
     "SELECT
       station_name,
@@ -29,8 +29,6 @@ cmpr_get_station_metadata <- function(conn) {
     RIGHT JOIN province
     ON county.province_code = province.province_code;"
   )
-  station_table <- dbFetch(res)
-  dbClearResult(res)
 
   # Clean up types and columns
   station_table <- station_table |>

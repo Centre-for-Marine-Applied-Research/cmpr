@@ -6,7 +6,7 @@
 #' @returns
 #' @export
 #' @import lubridate
-#' @importFrom DBI dbSendQuery
+#' @importFrom DBI dbGetQuery
 #'
 cmpr_update_depl_metadata <- function(conn, filepath) {
   # Retrieve metadata tracking sheet
@@ -14,14 +14,13 @@ cmpr_update_depl_metadata <- function(conn, filepath) {
   metadata_sheet <- cmpr_import_depl_metadata_sheet(filepath)
 
   # Retrieve most recently updated date from the database
-  res <- DBI::dbSendQuery(
+  data_import_table <- DBI::dbGetQuery(
     conn,
     "SELECT * FROM public.data_import_log
     WHERE data_name = 'ns_wq_metadata'
     ORDER BY import_date ASC
     LIMIT 1;"
   )
-  data_import_table <- DBI::dbFetch(res)
   last_db_update_date <- data_import_table |> dplyr::pull(import_date)
   #last_db_update_date <- "2024-01-01"
 

@@ -68,7 +68,6 @@ cmpr_get_station_data <- function(
   }
 
   # Queries are constructed using paste0 since sending them to the DB requires a "string" object not a "glue" object
-  # TODO: please keep values?!?!?
   query <-
     paste0(
       "WITH ",

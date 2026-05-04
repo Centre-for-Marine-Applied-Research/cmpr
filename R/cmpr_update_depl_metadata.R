@@ -18,7 +18,7 @@ cmpr_update_depl_metadata <- function(conn, filepath) {
     conn,
     "SELECT * FROM public.data_import_log
     WHERE data_name = 'ns_wq_metadata'
-    ORDER BY import_date ASC
+    ORDER BY import_date DESC
     LIMIT 1;"
   )
   last_db_update_date <- data_import_table |> dplyr::pull(import_date)

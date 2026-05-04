@@ -6,8 +6,11 @@
 \usage{
 cmpr_clean_enum_types(df)
 }
+\arguments{
+\item{df}{data frame with columns to clean.}
+}
 \value{
-columns with type converted to R types
+data frame with column types converted to R types
 }
 \description{
 Clean up PostgreSQL custom enum type columns

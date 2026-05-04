@@ -1,28 +1,27 @@
 #' Get list of CMP stations
 #'
-#' @param conn database connection object
+#' @inheritParams cmpr_get_depl_data
 #'
-#' @returns data frame of all stations and their attributes
+#' @returns data frame of all stations with their deloyment dates and locations.
 #' @export
 #'
-#' @importFrom DBI dbSendQuery
-#' @importFrom dplyr mutate
+#' @importFrom DBI dbClearResult dbFetch dbSendQuery
 #'
 cmpr_get_station_metadata <- function(conn) {
   # Retrieve station data from database, including waterbody, county, and province
   res <- DBI::dbSendQuery(
     conn,
-    "SELECT 
-      station_name, 
-      waterbody_name, 
+    "SELECT
+      station_name,
+      waterbody_name,
       county_name,
       province_name,
-      lease_num, 
-      station_latitude, 
-      station_longitude, 
-      station_classification, 
-      station_notes 
-    FROM sensorstring.ss_station 
+      lease_num,
+      station_latitude,
+      station_longitude,
+      station_classification,
+      station_notes
+    FROM sensorstring.ss_station
     RIGHT JOIN waterbody
     ON ss_station.waterbody_id = waterbody.waterbody_id
     RIGHT JOIN county

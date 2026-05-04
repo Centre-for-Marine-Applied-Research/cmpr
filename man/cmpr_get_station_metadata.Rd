@@ -7,10 +7,10 @@
 cmpr_get_station_metadata(conn)
 }
 \arguments{
-\item{conn}{database connection object}
+\item{conn}{database connection object.}
 }
 \value{
-data frame of all stations and their attributes
+data frame of all stations with their deloyment dates and locations.
 }
 \description{
 Get list of CMP stations

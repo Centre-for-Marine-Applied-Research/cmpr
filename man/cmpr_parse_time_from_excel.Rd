@@ -13,7 +13,7 @@ cmpr_parse_time_from_excel(x)
 string representing a time in the format HH:MM:SS
 }
 \description{
-Parse time from POSIXct
+Can we use lubridate::parse_datetime() for this?
 }
 \examples{
 datetime_from_excel <- as.POSIXct("2024-10-10 10:00:00")

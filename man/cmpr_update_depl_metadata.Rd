@@ -7,9 +7,13 @@
 cmpr_update_depl_metadata(conn, filepath)
 }
 \arguments{
-\item{conn}{database connection object}
+\item{conn}{database connection object.}
 
-\item{filepath}{location of the metadata tracking sheet Excel file}
+\item{filepath}{location of the metadata tracking sheet Excel file, including
+file name and extension.}
+}
+\value{
+tbd
 }
 \description{
 Update Deployment Metadata

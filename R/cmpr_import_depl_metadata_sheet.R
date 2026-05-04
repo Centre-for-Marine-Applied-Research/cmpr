@@ -1,10 +1,13 @@
 #' Import Deployment Metadata
 #'
-#' @param filepath location of the metadata tracking sheet Excel file
+#' @param filepath location of the metadata tracking sheet Excel file, include
+#'   file name and extension.
 #'
-#' @return data.frame metadata sheet
+#' @return data frame of the deployment metadata sheet
+#'
 #' @export
-#' @import dplyr
+#'
+#' @importFrom dplyr across contains filter select
 #' @importFrom readxl read_excel
 #'
 cmpr_import_depl_metadata_sheet <- function(filepath) {
@@ -69,14 +72,14 @@ cmpr_import_depl_metadata_sheet <- function(filepath) {
     }
   )
   # Remove any rows where:
-  metadata_sheet <- metadata_sheet %>%
+  metadata_sheet <- metadata_sheet |>
     # all values are NA
-    filter(rowSums(is.na(metadata_sheet)) != ncol(metadata_sheet)) %>%
+    filter(rowSums(is.na(metadata_sheet)) != ncol(metadata_sheet)) |>
     # waterbody is 0 (absence of XLOOKUP so no data)
     filter(waterbody != 0)
 
   # Reformat time columns
-  metadata_sheet <- metadata_sheet %>%
+  metadata_sheet <- metadata_sheet |>
     mutate(across(contains("time_utc"), cmpr_parse_time_from_excel))
 
   # Add row index as column to provide relevant row numbers in error messages
@@ -89,7 +92,7 @@ cmpr_import_depl_metadata_sheet <- function(filepath) {
   )
   waterbody_list <- unique(station_waterbody_county_list$waterbody)
 
-  invalid_waterbody_entries <- metadata_sheet %>%
+  invalid_waterbody_entries <- metadata_sheet |>
     filter(!(metadata_sheet$waterbody %in% waterbody_list))
 
   if (nrow(invalid_waterbody_entries) > 0) {
@@ -105,7 +108,7 @@ cmpr_import_depl_metadata_sheet <- function(filepath) {
   # Confirm valid station values
   station_list <- unique(station_waterbody_county_list$station)
 
-  invalid_station_entries <- metadata_sheet %>%
+  invalid_station_entries <- metadata_sheet |>
     filter(!(metadata_sheet$station %in% station_list))
 
   if (nrow(invalid_station_entries) > 0) {
@@ -117,5 +120,5 @@ cmpr_import_depl_metadata_sheet <- function(filepath) {
       "\n"
     ))
   }
-  metadata_sheet %>% select(-row_index)
+  metadata_sheet |> select(-row_index)
 }

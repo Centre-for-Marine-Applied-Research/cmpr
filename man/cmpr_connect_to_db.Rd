@@ -2,18 +2,19 @@
 % Please edit documentation in R/cmpr_connect_to_db.R
 \name{cmpr_connect_to_db}
 \alias{cmpr_connect_to_db}
-\title{Connect to CMP Database}
+\title{Connect to CMAR CMP Database}
 \usage{
 cmpr_connect_to_db(connection_config = "default")
 }
 \arguments{
-\item{connection_config}{name of configuration in config.yml to use for connection}
+\item{connection_config}{name of configuration in config.yml to use for
+connection}
 }
 \value{
 database connection object
 }
 \description{
-Connect to CMP Database
+User must be connected to Perennia VPN or Perennia Secure wifi.
 }
 \examples{
 db_conn <- try(connect_to_db())

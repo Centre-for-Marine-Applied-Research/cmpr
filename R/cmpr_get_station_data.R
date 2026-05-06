@@ -34,12 +34,14 @@ cmpr_get_station_data <- function(
   # Construct CTE for selected stations
   selected_station_cte <- glue::glue(
     "SelectedStation AS (
-      SELECT ss_station.station_id, ss_station.station_name, ss_depl.depl_id, depl_date, retrieval_date, sensor_depth_m, sensor_serial_num
+      SELECT ss_station.station_id, ss_station.station_name, ss_depl.depl_id, depl_date, retrieval_date, sensor_depth_m, sensor_model, sensor_depl.sensor_serial_num
       FROM sensorstring.ss_depl
       LEFT JOIN sensorstring.ss_station
       ON ss_depl.station_id = ss_station.station_id
       LEFT JOIN sensorstring.sensor_depl
       ON ss_depl.depl_id = sensor_depl.depl_id
+	    LEFT JOIN sensorstring.sensor
+	    ON sensor_depl.sensor_serial_num = sensor.sensor_serial_num
       WHERE station_name IN ({selected_station_list_string})
       )"
   )
@@ -74,7 +76,7 @@ cmpr_get_station_data <- function(
       "WITH ",
       selected_station_cte,
       selected_var_cte,
-      "SELECT station_name, depl_date, retrieval_date, sensor_depth_m, sensor_depl_measurement.sensor_serial_num, timestamp_utc, variable_type, variable_name, variable_value, qc_summary_flag
+      "SELECT station_name, depl_date, retrieval_date, sensor_depth_m, sensor_model, sensor_depl_measurement.sensor_serial_num, timestamp_utc, variable_type, variable_name, variable_value, qc_summary_flag
       FROM SelectedStation
       LEFT JOIN sensorstring.sensor_depl_measurement
       ON SelectedStation.depl_id = sensor_depl_measurement.depl_id

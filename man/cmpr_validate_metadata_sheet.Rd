@@ -7,7 +7,9 @@
 cmpr_validate_metadata_sheet(conn, metadata_sheet)
 }
 \arguments{
-\item{metadata_sheet}{}
+\item{conn}{database connection object}
+
+\item{metadata_sheet}{data frame of metadata pulled from the CMP metadata tracking sheet}
 }
 \value{
 NA

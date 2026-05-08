@@ -10,7 +10,7 @@
 #' @importFrom dplyr across contains filter select
 #' @importFrom readxl read_excel
 #'
-cmpr_import_depl_metadata_sheet <- function(filepath) {
+cmpr_import_depl_metadata <- function(filepath) {
   col_types <- c(
     "date", #last_updated_date
     "text", #station

@@ -1,5 +1,5 @@
 test_that("error message is produced if invalid date is provided", {
-  test_metadata_df <- cmpr_import_depl_metadata_sheet(paste0(
+  test_metadata_df <- cmpr_import_depl_metadata(paste0(
     system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking.xlsx"
   ))
@@ -11,7 +11,7 @@ test_that("error message is produced if invalid date is provided", {
 })
 
 test_that("metadata sheet is not filtered if no date is provided", {
-  test_metadata_df <- cmpr_import_depl_metadata_sheet(paste0(
+  test_metadata_df <- cmpr_import_depl_metadata(paste0(
     system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking.xlsx"
   ))
@@ -20,7 +20,7 @@ test_that("metadata sheet is not filtered if no date is provided", {
     test_metadata_df,
     test_last_update_date
   )
-  expected_metadata_df <- cmpr_import_depl_metadata_sheet(paste0(
+  expected_metadata_df <- cmpr_import_depl_metadata(paste0(
     system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking.xlsx"
   ))
@@ -28,7 +28,7 @@ test_that("metadata sheet is not filtered if no date is provided", {
 })
 
 test_that("metadata sheet is correctly filtered based on provided date", {
-  test_metadata_df <- cmpr_import_depl_metadata_sheet(paste0(
+  test_metadata_df <- cmpr_import_depl_metadata(paste0(
     system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking.xlsx"
   ))
@@ -37,7 +37,7 @@ test_that("metadata sheet is correctly filtered based on provided date", {
     test_metadata_df,
     test_last_update_date
   )
-  expected_metadata_df <- cmpr_import_depl_metadata_sheet(paste0(
+  expected_metadata_df <- cmpr_import_depl_metadata(paste0(
     system.file("testdata", package = "cmpr"),
     "/water_quality_deployment_tracking_filtered.xlsx"
   ))

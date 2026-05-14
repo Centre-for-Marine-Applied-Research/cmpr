@@ -2,17 +2,18 @@
 % Please edit documentation in R/cmpr_import_depl_metadata.R
 \name{cmpr_import_depl_metadata}
 \alias{cmpr_import_depl_metadata}
-\title{Import Deployment Metadata}
+\title{Update CMP database with new deployment metadata}
 \usage{
-cmpr_import_depl_metadata(filepath)
+cmpr_import_depl_metadata(conn, metadata_sheet)
 }
 \arguments{
-\item{filepath}{location of the metadata tracking sheet Excel file, include
-file name and extension.}
+\item{conn}{database connection object}
+
+\item{metadata_sheet}{data frame of cleaned data from the CMP metadata tracking sheet}
 }
 \value{
-data frame of the deployment metadata sheet
+tbd
 }
 \description{
-Import Deployment Metadata
+Update CMP database with new deployment metadata
 }

@@ -1,22 +1,22 @@
-#' Update Metadata
+#' Import Metadata to DB
 #'
 #' @param conn database connection object
 #' @param filepath location of the metadata tracking sheet Excel file
 #'
-#' @returns
+#' @returns tbd
 #' @export
 #' @import lubridate
 #' @importFrom DBI dbGetQuery
 #'
-cmpr_update_metadata <- function(conn, filepath) {
+cmpr_import_metadata <- function(conn, filepath) {
   # TODO: Retrieve location metadata
-  # cmpr_import_location_metadata()
+  # cmpr_read_location_metadata()
 
   # TODO: Submit location metadata updates to the database
-  #cmpr_update_db_location_metadata
+  #cmpr_import_location_metadata
   # Retrieve metadata tracking sheet
   #filepath <- "R:/tracking_sheets/metadata_tracking/water_quality_deployment_tracking.xlsx"
-  metadata_sheet <- cmpr_import_depl_metadata(filepath)
+  metadata_sheet <- cmpr_read_depl_metadata_sheet(filepath)
 
   # Retrieve most recently updated date from the database
   data_import_table <- DBI::dbGetQuery(

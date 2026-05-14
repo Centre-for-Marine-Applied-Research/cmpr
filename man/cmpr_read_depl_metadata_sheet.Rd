@@ -2,17 +2,17 @@
 % Please edit documentation in R/cmpr_read_depl_metadata_sheet.R
 \name{cmpr_read_depl_metadata_sheet}
 \alias{cmpr_read_depl_metadata_sheet}
-\title{Import Deployment Metadata}
+\title{Read Deployment Metadata from Metadata Tracking Sheet}
 \usage{
 cmpr_read_depl_metadata_sheet(filepath)
 }
 \arguments{
-\item{filepath}{location of the metadata tracking sheet Excel file, include
+\item{filepath}{location of the metadata tracking sheet Excel file, including
 file name and extension.}
 }
 \value{
 data frame of the deployment metadata sheet
 }
 \description{
-Import Deployment Metadata
+Read Deployment Metadata from Metadata Tracking Sheet
 }

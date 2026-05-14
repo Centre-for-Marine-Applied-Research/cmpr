@@ -1,6 +1,6 @@
-#' Import Deployment Metadata
+#' Read Deployment Metadata from Metadata Tracking Sheet
 #'
-#' @param filepath location of the metadata tracking sheet Excel file, include
+#' @param filepath location of the metadata tracking sheet Excel file, including
 #'   file name and extension.
 #'
 #' @return data frame of the deployment metadata sheet
@@ -86,6 +86,7 @@ cmpr_read_depl_metadata_sheet <- function(filepath) {
   metadata_sheet$row_index = rownames(metadata_sheet)
 
   # Confirm valid waterbody values
+  # TODO: Add a try catch here as well? Or reference the read_location_metadata_sheet function?
   station_waterbody_county_list <- read_excel(
     filepath,
     sheet = "station_waterbody_county"

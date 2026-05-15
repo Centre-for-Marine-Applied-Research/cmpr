@@ -10,45 +10,63 @@
 #' @importFrom dplyr across contains filter select
 #' @importFrom readxl read_excel
 #'
-cmpr_import_location_metadata <- function(conn, filepath) {
-    col_types <- c(
-        "text", # station
-        "text", # waterbody
-        "text", # county
-        "numeric", # latitude
-        "numeric", # longitude
-        "text", # latitude_ddm
-        "text", # longitude_ddm
-        "text", # status
-        "text" # notes
-    )
-
-    tryCatch(
-        {
-            location_metadata <- readxl::read_excel(
-                filepath,
-                sheet = "station_waterbody_county",
-                col_types = col_types
-            )
-        }, # Stop execution in case of warnings in read_excel
-        # This is important to properly manage datatypes
-        warning = function(w) {
-            stop(paste0(
-                "Warning in reading deployment metadata tracking sheet:\n",
-                w$message,
-                "\n"
-            ))
-        }
-    )
-    # Remove any rows where:
-    location_metadata <- location_metadata |>
-        # all values are NA
-        filter(rowSums(is.na(location_metadata)) != ncol(location_metadata))
-
-    # Pull in station, waterbody and county values from the database to identify new entries
-    waterbody_metadata <- cmpr_get_waterbody_metadata(conn)
+cmpr_import_location_metadata <- function(conn, location_metadata) {
+    # Pull in station, waterbody and county values from the database to distinguish updates from inserts
     station_metadata <- cmpr_get_station_metadata(conn)
+    waterbody_metadata <- cmpr_get_waterbody_metadata(conn)
     county_metadata <- cmpr_get_county_metadata(conn)
 
-    # Return new entries to be added to the database
+    # Identify existing versus new stations, waterbodies, and counties
+    # Feels like there should be a better way to do this... Tried looking into group_by and group_split
+    # in dplyr but they didn't really seem any better since they'd need a grouping column
+    existing_stations <- location_metadata |>
+        dplyr::filter(
+            station %in% station_metadata$station
+        ) |>
+        dplyr::mutate(station_classification = "coastal") |>
+        dplyr::select(
+            station,
+            waterbody,
+            station_latitude = latitude,
+            station_longitude = longitude,
+            station_classification,
+            station_notes = notes
+        )
+    new_stations <- location_metadata |>
+        dplyr::filter(
+            !(station %in% station_metadata$station)
+        ) |>
+        dplyr::mutate(station_classification = "coastal") |>
+        dplyr::select(
+            station,
+            waterbody,
+            station_latitude = latitude,
+            station_longitude = longitude,
+            station_classification,
+            station_notes = notes
+        )
+
+    existing_waterbodies <- location_metadata |>
+        dplyr::filter(
+            waterbody %in% waterbody_metadata$waterbody_name
+        )
+    new_waterbodies <- location_metadata |>
+        dplyr::filter(
+            !(waterbody %in% waterbody_metadata$waterbody)
+        )
+
+    existing_counties <- location_metadata |>
+        dplyr::filter(
+            county %in% county_metadata$county_name
+        )
+    new_counties <- location_metadata |>
+        dplyr::filter(
+            !(county %in% county_metadata$counties)
+        )
+
+    # TODO: Insert new entries into the database
+    #cmpr_insert_location_metadata()
+
+    # TODO: Update existing entries in the database
+    #cmpr_update_location_metadata()
 }

@@ -78,9 +78,15 @@ cmpr_read_depl_metadata_sheet <- function(filepath) {
     # waterbody is 0 (absence of XLOOKUP so no data)
     filter(waterbody != 0)
 
-  # Reformat time columns
+  # Reformat time columns and lease numbers
   metadata_sheet <- metadata_sheet |>
-    mutate(across(contains("time_utc"), cmpr_parse_time_from_excel))
+    dplyr::mutate(
+      across(contains("time_utc"), cmpr_parse_time_from_excel)
+    ) |>
+    dplyr::rowwise() |>
+    dplyr::mutate(
+      station = cmpr_prepend_lease_zeroes(station)
+    )
 
   # Add row index as column to provide relevant row numbers in error messages
   metadata_sheet$row_index = rownames(metadata_sheet)

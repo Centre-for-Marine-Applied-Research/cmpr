@@ -140,3 +140,22 @@ cmpr_convert_to_ss_cols <- function(df) {
     dplyr::rename(any_of(cmpdb_to_ss_col_map))
   df
 }
+
+#' Prepend any missing zeroes to lease numbers
+#'
+#' @param lease_num lease number that may be missing prepended zeroes due to spreadsheet formatting idiosyncracies
+#'
+#' @returns string lease number with prepended zeroes
+#'
+#' @export
+cmpr_prepend_lease_zeroes <- function(lease_num) {
+  # Ensure it is a lease number, i.e. is entirely numbers
+  if (grepl(pattern = "^[0-9]*$", lease_num)) {
+    if (!is.na(lease_num)) {
+      while (nchar(lease_num) < 4) {
+        lease_num <- paste0("0", lease_num)
+      }
+    }
+  }
+  return(lease_num)
+}

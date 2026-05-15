@@ -37,5 +37,7 @@ cmpr_read_location_metadata_sheet <- function(filepath) {
       ))
     }
   )
-  location_metadata
+  location_metadata |>
+    dplyr::rowwise() |>
+    dplyr::mutate(station = cmpr_prepend_lease_zeroes(station))
 }

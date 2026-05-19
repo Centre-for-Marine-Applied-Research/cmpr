@@ -92,15 +92,11 @@ cmpr_read_depl_metadata_sheet <- function(filepath) {
   metadata_sheet$row_index = rownames(metadata_sheet)
 
   # Confirm valid waterbody values
-  # TODO: Add a try catch here as well? Or reference the read_location_metadata_sheet function?
-  station_waterbody_county_list <- read_excel(
-    filepath,
-    sheet = "station_waterbody_county"
-  )
-  waterbody_list <- unique(station_waterbody_county_list$waterbody)
+  location_metadata <- cmpr_read_location_metadata_sheet(filepath)
+  waterbody_list <- unique(location_metadata$waterbody)
 
   invalid_waterbody_entries <- metadata_sheet |>
-    filter(!(metadata_sheet$waterbody %in% waterbody_list))
+    dplyr::filter_out(waterbody %in% waterbody_list)
 
   if (nrow(invalid_waterbody_entries) > 0) {
     stop(paste0(
@@ -113,10 +109,10 @@ cmpr_read_depl_metadata_sheet <- function(filepath) {
   }
 
   # Confirm valid station values
-  station_list <- unique(station_waterbody_county_list$station)
+  station_list <- unique(location_metadata$station)
 
   invalid_station_entries <- metadata_sheet |>
-    filter(!(metadata_sheet$station %in% station_list))
+    dplyr::filter_out(station %in% station_list)
 
   if (nrow(invalid_station_entries) > 0) {
     stop(paste0(

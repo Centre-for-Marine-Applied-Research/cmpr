@@ -13,6 +13,7 @@ cmpr_read_location_metadata_sheet <- function(filepath) {
     "text", #station
     "text", #waterbody
     "text", #county
+    "text", #lease_num
     "numeric", #latitude
     "numeric", #longitude
     "text", #latitude_ddm

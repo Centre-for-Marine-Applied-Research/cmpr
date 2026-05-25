@@ -175,3 +175,54 @@ cmpr_prepend_lease_zeroes <- function(lease_num) {
   }
   return(lease_num)
 }
+
+#' Convert a data frame into a series of values in SQL format for INSERT or UPDATE
+#'
+#' @param df data frame to convert
+#'
+#' @returns string of SQL-formatted values for INSERT or UPDATE operations
+#' @importFrom dplyr mutate
+#' @importFrom dplyr across
+#' @importFrom dplyr where
+#' @importFrom dplyr case_when
+#' @importFrom tidyr unite
+#' @importFrom dplyr everything
+#' @importFrom purrr map_dfr
+#' @importFrom stringr str_replace_all
+#' @importFrom dplyr pull
+#'
+#' @export
+cmpr_convert_df_to_query_value_format <- function(df) {
+  df |>
+    # Add single quotes to non-NA string values for DB compatibility
+    dplyr::mutate(
+      across(
+        where(is.character),
+        ~ dplyr::case_when(
+          !is.na(.x) ~ paste0("'", .x, "'"),
+          .default = .x
+        )
+      )
+    ) |>
+    tidyr::unite(
+      col = "comma_sep_values",
+      dplyr::everything(),
+      sep = ","
+    ) |>
+    purrr::map_dfr(~ paste0("(", .x, ")")) |>
+    # Replace NAs with NULLs for database compatibility
+    # I couldn't find a way to do this before string-ifying
+    # dplyr::case_when interprets "NULL" as not supplying a function
+    # and tidyr::replace_na gets fussy with types
+    # but maybe it was because the input is a rowwise vector?
+    # That's a later problem.
+    dplyr::mutate(
+      comma_sep_values = stringr::str_replace_all(
+        string = comma_sep_values,
+        pattern = ",NA",
+        replacement = ",NULL"
+      )
+    ) |>
+    dplyr::pull(comma_sep_values) |>
+    paste0(collapse = ",\n")
+}

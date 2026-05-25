@@ -9,14 +9,17 @@
 #' @importFrom DBI dbGetQuery
 #'
 cmpr_import_metadata <- function(conn, filepath) {
-  # TODO: Retrieve location metadata
-  # cmpr_read_location_metadata()
+  # LOCATION METADATA ----
+  # Retrieve location metadata
+  location_metadata_sheet <- cmpr_read_location_metadata_sheet(filepath)
 
-  # TODO: Submit location metadata updates to the database
-  #cmpr_import_location_metadata
+  # Submit location metadata updates to the database
+  cmpr_import_location_metadata(conn, location_metadata)
+
+  # DEPLOYMENT METADATA ----
   # Retrieve metadata tracking sheet
   #filepath <- "R:/tracking_sheets/metadata_tracking/water_quality_deployment_tracking.xlsx"
-  metadata_sheet <- cmpr_read_depl_metadata_sheet(filepath)
+  depl_metadata_sheet <- cmpr_read_depl_metadata_sheet(filepath)
 
   # Retrieve most recently updated date from the database
   data_import_table <- DBI::dbGetQuery(
@@ -43,17 +46,16 @@ cmpr_import_metadata <- function(conn, filepath) {
     }
   )
 
-  metadata_sheet <- metadata_sheet |>
+  depl_metadata_sheet <- depl_metadata_sheet |>
     filter(last_updated_date > last_db_update_date)
 
   # Validate the metadata sheet to be imported based on database values
   # All location metadata should have been submitted to the database earlier in this function
   # So any errors should be flagged
-  # Does this need a tryCatch?
-  cmpr_validate_metadata_sheet(conn, metadata_sheet)
+  cmpr_validate_metadata_sheet(conn, depl_metadata_sheet)
 
   # Submit metadata to the database
-  #cmpr_update_db_depl_metadata(conn, metadata_sheet)
+  #cmpr_update_depl_metadata(conn, depl_metadata_sheet)
 
   # TODO: What information can be returned here that would be useful?
 }

@@ -176,7 +176,7 @@ cmpr_prepend_lease_zeroes <- function(lease_num) {
   return(lease_num)
 }
 
-#' Convert a data frame into a series of values in SQL format for INSERT or UPDATE
+#' Convert a data frame into a string of values in SQL format for INSERT or UPDATE
 #'
 #' @param df data frame to convert
 #'
@@ -225,4 +225,15 @@ cmpr_convert_df_to_query_value_format <- function(df) {
     ) |>
     dplyr::pull(comma_sep_values) |>
     paste0(collapse = ",\n")
+}
+
+#' Convert the column names of a data frame into a string of values in SQL format for INSERT or UPDATE
+#'
+#' @param df data frame with column  names to convert
+#'
+#' @returns string of SQL-formatted values for INSERT or UPDATE
+#'
+#' @export
+cmpr_convert_df_cols_to_query_col_format <- function(df) {
+  paste0("(", paste0(names(df), collapse = ", "), ")")
 }

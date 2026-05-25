@@ -2,13 +2,23 @@
 % Please edit documentation in R/cmpr_insert_location_metadata.R
 \name{cmpr_insert_location_metadata}
 \alias{cmpr_insert_location_metadata}
-\title{Title}
+\title{Insert Location Metadata into database}
 \usage{
-cmpr_insert_location_metadata(values, mode = "station")
+cmpr_insert_location_metadata(conn, new_location_metadata, mode, notes = "")
 }
 \arguments{
-\item{mode}{}
+\item{conn}{database connection object}
+
+\item{new_location_metadata}{data frame of new location metadata, matching database format,}
+
+\item{mode}{indicates which kind of location data is coming into the database and thus which tables it
+should go into, options are 'waterbody' and 'station'}
+
+\item{notes}{optional notes to include in the data import log for this location metadata insertion}
+}
+\value{
+tbd
 }
 \description{
-Title
+Insert Location Metadata into database
 }

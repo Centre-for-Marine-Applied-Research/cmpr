@@ -4,14 +4,15 @@
 \alias{cmpr_import_location_metadata}
 \title{Import Location Metadata}
 \usage{
-cmpr_import_location_metadata(conn, filepath)
+cmpr_import_location_metadata(conn, location_metadata_sheet)
 }
 \arguments{
-\item{filepath}{location of the metadata tracking sheet Excel file, include
-file name and extension.}
+\item{conn}{database connection object}
+
+\item{location_metadata_sheet}{data frame of values read in from the location metadata Excel sheetS}
 }
 \value{
-data frame of the deployment metadata sheet
+tbd
 }
 \description{
 Import Location Metadata

@@ -1,71 +1,111 @@
 #' Import Location Metadata
 #'
-#' @param filepath location of the metadata tracking sheet Excel file, include
-#'   file name and extension.
+#' @param conn database connection object
+#' @param location_metadata_sheet data frame of values read in from the location metadata Excel sheetS
 #'
-#' @return data frame of the deployment metadata sheet
+#' @return tbd
 #'
 #' @export
 #'
 #' @importFrom dplyr across contains filter select
-#' @importFrom readxl read_excel
 #'
-cmpr_import_location_metadata <- function(conn, location_metadata) {
+cmpr_import_location_metadata <- function(conn, location_metadata_sheet) {
     # Pull in station, waterbody and county values from the database to distinguish updates from inserts
     station_metadata <- cmpr_get_station_metadata(conn)
     waterbody_metadata <- cmpr_get_waterbody_metadata(conn)
     county_metadata <- cmpr_get_county_metadata(conn)
 
-    # Identify existing versus new stations, waterbodies, and counties
-    # Feels like there should be a better way to do this... Tried looking into group_by and group_split
-    # in dplyr but they didn't really seem any better since they'd need a grouping column
-    existing_stations <- location_metadata |>
+    # Identify existing versus new waterbodies and stations
+    # Waterbodies come first because stations have a dependency on them
+    existing_waterbodies <- location_metadata_sheet |>
+        dplyr::distinct(waterbody, .keep_all = TRUE) |>
+        dplyr::filter(
+            waterbody %in% waterbody_metadata$waterbody_name
+        ) |>
+        dplyr::select(waterbody_name = waterbody)
+
+    new_waterbodies <- location_metadata_sheet |>
+        dplyr::distinct(waterbody, .keep_all = TRUE) |>
+        dplyr::filter(
+            !(waterbody %in% waterbody_metadata$waterbody_name)
+        ) |>
+        dplyr::select(waterbody_name = waterbody)
+
+    # Put updated waterbodies into the database first so stations can be linked correctly afterwards
+    if (nrow(new_waterbodies) > 0) {
+        cmpr_insert_location_metadata(
+            conn,
+            new_location_metadata = new_waterbodies,
+            mode = "waterbody",
+            notes = "new waterbody import"
+        )
+    }
+    if (nrow(existing_waterbodies) > 0) {
+        # cmpr_update_location_metadata(
+        #     conn,
+        #     updated_location_metadata = existing_waterbodies,
+        #     mode = "waterbody",
+        #     notes = "waterbody update"
+        # )
+    }
+
+    # Get updated waterbody data to match any new waterbodies to new stations in those waterbodies
+    waterbody_metadata <- cmpr_get_waterbody_metadata(conn)
+    # Feels like there should be a better way to generate both data frames...
+    # Tried looking into group_by and group_split in dplyr but didn't really seem any better it'd need a grouping column
+    existing_stations <- location_metadata_sheet |>
         dplyr::filter(
             station %in% station_metadata$station
         ) |>
-        dplyr::mutate(station_classification = "coastal") |>
+        dplyr::mutate(
+            station_classification = "coastal"
+        ) |>
+        cmpr_convert_to_db_cols() |>
+        dplyr::left_join(
+            waterbody_metadata,
+            by = dplyr::join_by(waterbody_name)
+        ) |>
+        dplyr::left_join(
+            county_metadata,
+            by = dplyr::join_by(county_name)
+        ) |>
         dplyr::select(
-            station,
-            waterbody,
-            station_latitude = latitude,
-            station_longitude = longitude,
+            waterbody_id,
+            province_code,
+            county_code,
+            station_name,
+            station_latitude,
+            station_longitude,
             station_classification,
             station_notes = notes
         )
-    new_stations <- location_metadata |>
+
+    new_stations <- location_metadata_sheet |>
         dplyr::filter(
             !(station %in% station_metadata$station)
         ) |>
-        dplyr::mutate(station_classification = "coastal") |>
+        dplyr::mutate(
+            station_classification = "coastal"
+        ) |>
+        cmpr_convert_to_db_cols() |>
+        dplyr::left_join(
+            waterbody_metadata,
+            by = dplyr::join_by(waterbody_name)
+        ) |>
+        dplyr::left_join(
+            county_metadata,
+            by = dplyr::join_by(county_name)
+        ) |>
         dplyr::select(
-            station,
-            waterbody,
-            station_latitude = latitude,
-            station_longitude = longitude,
+            waterbody_id,
+            province_code,
+            county_code,
+            station_name,
+            station_latitude,
+            station_longitude,
             station_classification,
             station_notes = notes
         )
-
-    existing_waterbodies <- location_metadata |>
-        dplyr::filter(
-            waterbody %in% waterbody_metadata$waterbody_name
-        )
-    new_waterbodies <- location_metadata |>
-        dplyr::filter(
-            !(waterbody %in% waterbody_metadata$waterbody)
-        )
-
-    existing_counties <- location_metadata |>
-        dplyr::filter(
-            county %in% county_metadata$county_name
-        )
-    new_counties <- location_metadata |>
-        dplyr::filter(
-            !(county %in% county_metadata$counties)
-        )
-
-    # TODO: Insert new entries into the database
-    #cmpr_insert_location_metadata()
 
     # TODO: Update existing entries in the database
     #cmpr_update_location_metadata()

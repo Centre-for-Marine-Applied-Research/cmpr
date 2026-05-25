@@ -141,6 +141,22 @@ cmpr_convert_to_ss_cols <- function(df) {
   df
 }
 
+#' Convert from `sensorstrings` R column names to CMPDB column names
+#'
+#' @param df data frame with columns to be renamed
+#'
+#' @return columns
+#'
+#' @importFrom dplyr any_of rename
+
+cmpr_convert_to_db_cols <- function(df) {
+  cmpdb_to_ss_col_map <- cmpr_get_ss_cmpdb_col_mapping("reverse")
+
+  df <- df |>
+    dplyr::rename(any_of(cmpdb_to_ss_col_map))
+  df
+}
+
 #' Prepend any missing zeroes to lease numbers
 #'
 #' @param lease_num lease number that may be missing prepended zeroes due to spreadsheet formatting idiosyncracies

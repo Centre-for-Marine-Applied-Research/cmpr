@@ -2,7 +2,7 @@
 % Please edit documentation in R/cmpr_helpers.R
 \name{cmpr_convert_df_to_query_value_format}
 \alias{cmpr_convert_df_to_query_value_format}
-\title{Convert a data frame into a series of values in SQL format for INSERT or UPDATE}
+\title{Convert a data frame into a string of values in SQL format for INSERT or UPDATE}
 \usage{
 cmpr_convert_df_to_query_value_format(df)
 }
@@ -13,5 +13,5 @@ cmpr_convert_df_to_query_value_format(df)
 string of SQL-formatted values for INSERT or UPDATE operations
 }
 \description{
-Convert a data frame into a series of values in SQL format for INSERT or UPDATE
+Convert a data frame into a string of values in SQL format for INSERT or UPDATE
 }

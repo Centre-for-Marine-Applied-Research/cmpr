@@ -50,8 +50,9 @@ cmpr_get_depl_data <- function(
       ON ss_depl.station_id = ss_station.station_id
       LEFT JOIN sensorstring.sensor_depl
       ON ss_depl.depl_id = sensor_depl.depl_id
-      WHERE station_name = '{station_name}'",
-    " AND depl_date = '{depl_date}')"
+      WHERE station_name = {station_name}",
+    " AND depl_date = {depl_date})",
+    .con = conn
   )
 
   # Construct CTE for selected variable type or name
@@ -59,7 +60,8 @@ cmpr_get_depl_data <- function(
     selected_var_cte <- glue::glue_sql(
       ", SelectedVariable AS (
       SELECT *
-      FROM sensorstring.ss_variable)"
+      FROM sensorstring.ss_variable)",
+      .con = conn
     )
   } else {
     if (is.null(variable_type)) {
@@ -73,7 +75,8 @@ cmpr_get_depl_data <- function(
       ", SelectedVariable AS (
       SELECT *
       FROM sensorstring.ss_variable
-      WHERE {var_selection_col} = '{var_selection_val}')"
+      WHERE {`var_selection_col`} = {var_selection_val})",
+      .con = conn
     )
   }
 

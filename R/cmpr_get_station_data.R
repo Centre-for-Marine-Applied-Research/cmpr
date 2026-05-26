@@ -29,7 +29,7 @@ cmpr_get_station_data <- function(
   # TODO: ensure date parses correctly
   # TODO: ensure variable type is valid
   selected_station_list_string <-
-    paste(glue::glue_sql("'{station_name}'"), collapse = ", ")
+    glue::glue_sql("({station_name*})", .con = conn)
 
   # Construct CTE for selected stations
   selected_station_cte <- glue::glue_sql(
@@ -41,7 +41,8 @@ cmpr_get_station_data <- function(
       LEFT JOIN sensorstring.sensor_depl
       ON ss_depl.depl_id = sensor_depl.depl_id
       WHERE station_name IN ({selected_station_list_string})
-      )"
+      )",
+    .con = conn
   )
 
   # Construct CTE for selected variable type or name
@@ -49,7 +50,8 @@ cmpr_get_station_data <- function(
     selected_var_cte <- glue::glue_sql(
       ", SelectedVariable AS (
       SELECT *
-      FROM sensorstring.ss_variable)"
+      FROM sensorstring.ss_variable)",
+      .con = conn
     )
   } else {
     if (is.null(variable_type)) {
@@ -63,7 +65,8 @@ cmpr_get_station_data <- function(
       ", SelectedVariable AS (
       SELECT *
       FROM sensorstring.ss_variable
-      WHERE {var_selection_col} = '{var_selection_val}')"
+      WHERE {`var_selection_col`} = {var_selection_val})",
+      .con = conn
     )
   }
 
@@ -81,6 +84,7 @@ cmpr_get_station_data <- function(
       RIGHT JOIN SelectedVariable
       ON SelectedVariable.variable_id = sensor_depl_measurement.variable_id;"
     )
+  print(query)
 
   # TODO: Implement pagination and a progress bar
   res <- DBI::dbSendQuery(

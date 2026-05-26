@@ -9,7 +9,8 @@ cmpr_record_data_import <- function(conn, data_name, notes = "") {
   import_date <- lubridate::now()
   query <- glue::glue_sql(
     "INSERT INTO data_import_log (data_name, import_date, notes) 
-    VALUES ('{data_name}', '{import_date}', '{notes}');"
+    VALUES ({data_name}, {import_date}, {notes});",
+    .con = conn
   )
 
   num_affected_rows <- DBI::dbExecute(conn, query)

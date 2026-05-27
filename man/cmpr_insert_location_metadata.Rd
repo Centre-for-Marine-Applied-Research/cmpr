@@ -4,7 +4,7 @@
 \alias{cmpr_insert_location_metadata}
 \title{Insert Location Metadata into database}
 \usage{
-cmpr_insert_location_metadata(conn, new_location_metadata, mode, notes = "")
+cmpr_insert_location_metadata(conn, new_location_metadata, mode)
 }
 \arguments{
 \item{conn}{database connection object}
@@ -13,8 +13,6 @@ cmpr_insert_location_metadata(conn, new_location_metadata, mode, notes = "")
 
 \item{mode}{indicates which kind of location data is coming into the database and thus which tables it
 should go into, options are 'waterbody' and 'station'}
-
-\item{notes}{optional notes to include in the data import log for this location metadata insertion}
 }
 \value{
 tbd

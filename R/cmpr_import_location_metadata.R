@@ -36,8 +36,7 @@ cmpr_import_location_metadata <- function(conn, location_metadata_sheet) {
         cmpr_insert_location_metadata(
             conn,
             new_location_metadata = new_waterbodies,
-            mode = "waterbody",
-            notes = "new waterbody import"
+            mode = "waterbody"
         )
     }
     if (nrow(existing_waterbodies) > 0) {

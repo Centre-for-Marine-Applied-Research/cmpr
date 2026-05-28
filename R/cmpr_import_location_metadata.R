@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#' @importFrom dplyr across contains filter select
+#' @importFrom dplyr across contains filter select left_join join_by
 #'
 cmpr_import_location_metadata <- function(conn, location_metadata_sheet) {
     # Pull in station, waterbody and county values from the database to distinguish updates from inserts
@@ -19,10 +19,14 @@ cmpr_import_location_metadata <- function(conn, location_metadata_sheet) {
     # Waterbodies come first because stations have a dependency on them
     existing_waterbodies <- location_metadata_sheet |>
         dplyr::distinct(waterbody, .keep_all = TRUE) |>
+        dplyr::left_join(
+            waterbody_metadata,
+            by = dplyr::join_by(waterbody == waterbody_name)
+        ) |>
         dplyr::filter(
             waterbody %in% waterbody_metadata$waterbody_name
         ) |>
-        dplyr::select(waterbody_name = waterbody)
+        dplyr::select(waterbody_id, waterbody_name = waterbody)
 
     new_waterbodies <- location_metadata_sheet |>
         dplyr::distinct(waterbody, .keep_all = TRUE) |>

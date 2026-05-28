@@ -7,8 +7,6 @@
 #'
 #' @returns tbd
 #'
-#' @importFrom glue glue_sql
-#'
 #' @export
 cmpr_insert_location_metadata <- function(
   conn,

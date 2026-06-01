@@ -17,16 +17,15 @@ cmpr_import_location_metadata <- function(conn, location_metadata_sheet) {
 
     # Identify existing versus new waterbodies and stations
     # Waterbodies come first because stations have a dependency on them
-    existing_waterbodies <- location_metadata_sheet |>
-        dplyr::distinct(waterbody, .keep_all = TRUE) |>
-        dplyr::left_join(
-            waterbody_metadata,
-            by = dplyr::join_by(waterbody == waterbody_name)
-        ) |>
-        dplyr::filter(
-            waterbody %in% waterbody_metadata$waterbody_name
-        ) |>
-        dplyr::select(waterbody_id, waterbody_name = waterbody)
+    # But since the only property of a waterbody is its name, there aren't really any detectable updates we could make
+    # We'd have to be updating the name... but to do so we'd need to have a new name... Which therefore wouldn't match the database
+    # But we might add a new column in for waterbodies someday, so I'm leaving it commented in for now
+    # existing_waterbodies <- location_metadata_sheet |>
+    #     dplyr::distinct(waterbody, .keep_all = TRUE) |>
+    #     dplyr::filter(
+    #         waterbody %in% waterbody_metadata$waterbody_name
+    #     ) |>
+    #     dplyr::select(waterbody_id, waterbody_name = waterbody)
 
     new_waterbodies <- location_metadata_sheet |>
         dplyr::distinct(waterbody, .keep_all = TRUE) |>
@@ -42,18 +41,10 @@ cmpr_import_location_metadata <- function(conn, location_metadata_sheet) {
             new_location_metadata = new_waterbodies,
             mode = "waterbody"
         )
-    }
-    if (nrow(existing_waterbodies) > 0) {
-        # cmpr_update_location_metadata(
-        #     conn,
-        #     updated_location_metadata = existing_waterbodies,
-        #     mode = "waterbody",
-        #     notes = "waterbody update"
-        # )
+        # Get updated waterbody data to match any new waterbodies to new stations in those waterbodies
+        waterbody_metadata <- cmpr_get_waterbody_metadata(conn)
     }
 
-    # Get updated waterbody data to match any new waterbodies to new stations in those waterbodies
-    waterbody_metadata <- cmpr_get_waterbody_metadata(conn)
     # Feels like there should be a better way to generate both data frames...
     # Tried looking into group_by and group_split in dplyr but didn't really seem any better it'd need a grouping column
     existing_stations <- location_metadata_sheet |>
@@ -110,6 +101,20 @@ cmpr_import_location_metadata <- function(conn, location_metadata_sheet) {
             station_notes = notes
         )
 
-    # TODO: Update existing entries in the database
-    #cmpr_update_location_metadata()
+    # Put new stations into the database
+    if (nrow(new_stations) > 0) {
+        cmpr_insert_location_metadata(
+            conn,
+            new_location_metadata = new_stations,
+            mode = "station"
+        )
+    }
+    # Update existing stations in the database
+    if (nrow(existing_stations) > 0) {
+        cmpr_update_location_metadata(
+            conn,
+            updated_location_metadata = existing_stations,
+            mode = "station"
+        )
+    }
 }

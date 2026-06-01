@@ -1,0 +1,252 @@
+station_name,waterbody_name,county_name,lease_num,station_latitude,station_longitude,station_notes
+0001,Country Harbour,Guysborough,0001,45.18561,-61.71676,NA
+0028,Marie Joseph Harbour,Guysborough,0028,44.9625,-62.06083,NA
+0193,Denas Pond,Inverness,0193,46.00718,-60.98854,NA
+0622,Country Harbour,Guysborough,0622,45.23194,-61.76,NA
+0667,Arichat Harbour,Richmond,0667,45.49341,-61.01947,NA
+0716 Center,Arichat Harbour,Richmond,0716,45.50135,-61.04197,NA
+0745,Nyanza Bay,Victoria,NA,46.0854,-60.89284,NA
+0778,St. Peters Inlet,Richmond,NA,45.66183,-60.84761,NA
+0814x E,Whycocomagh Basin,Inverness,0814x,45.95126,-61.12071,NA
+0814x W,Whycocomagh Basin,Inverness,0814x,45.94547,-61.12917,NA
+0994,St. Peters Inlet,Richmond,NA,45.65533,-60.84581,NA
+1012,St. Marys Bay,Digby,1012,44.4071,-66.16053,NA
+1042,Annapolis Basin,Annapolis,1042,44.65286,-65.67453,NA
+1147,McNabs Bay,Colchester,NA,45.7566,-63.35891,NA
+1199,Whitehead Harbour,Guysborough,1199,45.27429,-61.12844,May be distinct from Northeast Branch
+1307,Country Harbour,Guysborough,1307,45.16007,-61.68006,NA
+1323,Sober Island Pond,Halifax,1323,44.84519,-62.46629,NA
+1330,Mabou Harbour,Inverness,1330,46.08417,-61.45722,NA
+1331,Mabou Harbour,Inverness,1331,46.07547,-61.44736,NA
+1369,Merigomish Harbour,Pictou,NA,45.652013,-62.431102,"Initially deployed for Ramon. No data recorded for initial deployment, so lat/long updated to match later aquaHub deployment"
+1442,Antigonish Harbour,Antigonish,NA,45.671617,-61.892617,NA
+1443,Antigonish Harbour,Antigonish,NA,45.67901667,-61.89558333,NA
+5004,Annapolis Basin,Annapolis,NA,44.67657,-65.69118,NA
+5005,Annapolis Basin,Annapolis,5005,44.63417,-65.71193,NA
+5006,Annapolis Basin,Annapolis,5006,44.66958,-65.64773,NA
+5007,St. Marys Bay,Digby,5007,44.53912,-65.95798,NA
+5008,St. Marys Bay,Digby,5008,44.50384,-65.9323,NA
+Aberdeen,Whycocomagh Bay,Inverness,NA,45.97608,-61.02268,NA
+Antigonish 1,Grahams Cove,Antigonish,NA,45.67768,-61.91248,NA
+Antigonish 2,Grahams Cove,Antigonish,NA,45.67762,-61.91265,NA
+Antigonish 3,Grahams Cove,Antigonish,NA,45.67756,-61.91282,NA
+BDLS-1108,Lochmore Harbour,Cape Breton,NA,45.894472,-60.572278,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-1225,McKinnons Harbour,Victoria,NA,45.930472,-60.932222,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-1246,MacIvers Cove,Victoria,NA,46.048194,-60.826583,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-1430,Whycocomagh Bay,Inverness,NA,45.979667,-61.028833,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-193,Denas Pond,Inverness,NA,46.008028,-60.98925,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-496,MacLeans Cove,Inverness,NA,45.866,-61.059194,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-838,Soldiers Cove,Richmond,NA,45.696667,-60.7425,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-AD,Whycocomagh Bay,Inverness,NA,45.957861,-61.001583,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-BMB,Little Boom,Inverness,NA,45.904889,-61.01825,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-BP,Benacadie Pond,Cape Breton,NA,45.903139,-60.72325,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-BSA,MacKillops Pond,Victoria,NA,46.216917,-60.59725,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-EBS,East Bay,Cape Breton,NA,46.015694,-60.393,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-JLM,MacKinnons Cove,Inverness,NA,45.874306,-60.996583,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-MC,Morrison Cove,Inverness,NA,45.908333,-61.035806,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-MDP,MacDonalds Pond,Inverness,NA,45.938861,-61.107694,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-MFH,MacRaes Cove,Inverness,NA,45.870611,-60.933972,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-NW,Nyanza Bay,Victoria,NA,46.08025,-60.876833,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-OD,Blues Cove,Inverness,NA,45.900417,-61.081139,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-RPWB,Ross Pond,Inverness,NA,45.751083,-61.153972,MSX Surveillance (Bras d'Or Lakes Surveillance)
+BDLS-WBR,Campbells Cove,Victoria,NA,46.025167,-60.863,MSX Surveillance (Bras d'Or Lakes Surveillance)
+Back Harbour,Merigomish Harbour,Pictou,1320,45.63213,-62.50563,NA
+Bald Rock,Whitehead Harbour,Guysborough,NA,45.19868,-61.18863,NA
+Barachois,Indian Harbour,Guysborough,NA,45.08481,-61.82364,NA
+Barra Strait N,Bras d'Or Lakes,Victoria,NA,45.96545,-60.79936,NA
+Barra Strait S,Bras d'Or Lakes,Victoria,NA,45.94698,-60.80919,NA
+Barren Island,Marie Joseph Harbour,Guysborough,NA,44.9502,-62.01107,NA
+Bartletts Beach,Green Cove,Digby,NA,44.01019,-66.18618,NA
+Bay St. Lawrence,Bay St. Lawrence,Victoria,NA,47.013967,-60.48855,NA
+Beaver Point,Beaver Harbour,Halifax,NA,44.87685,-62.39985,NA
+Big Pond Point,Chebogue Harbour,Yarmouth,NA,43.77039,-66.13518,NA
+Big Sluice,Salt Bay,Yarmouth,1400,43.81344,-65.91214,NA
+Birchy Head,St. Margarets Bay,Lunenburg,NA,44.57001,-64.03446,NA
+Black Rocks,New Harbour,Guysborough,NA,45.159702,-61.403179,NA
+Blue Island,Green Harbour,Shelburne,NA,43.686279999999996,-65.16781,NA
+Borgles Island,Shoal Bay,Halifax,NA,44.77311,-62.72585,NA
+Broad 1 Dirt Road 1,Broad River,Queens,NA,43.97458,-64.88172,NA
+Bull Rock,Fishermans Harbour,Guysborough,NA,45.083766,-61.646531,NA
+Burnt Island,Whitehead Harbour,Guysborough,0191,45.25571,-61.14668,NA
+Cameron Island,West Bay,Inverness,NA,45.8116166666667,-61.02655,NA
+Camerons Cove,Woods Harbour,Shelburne,0967,43.49714,-65.73784,NA
+Canso Lock,Strait of Canso,Inverness,NA,45.64688,-61.41147,NA
+Cape Auguet,Arichat Harbour,Richmond,NA,45.4982,-61.01917,NA
+Cape Auguet Bay,Arichat Harbour,Richmond,NA,45.50036,-61.0187,NA
+Captains Pond,Grahams Cove,Antigonish,NA,45.6748,-61.90786,NA
+Careys Point,Snows Cove,Halifax,NA,44.91053333,-62.31998333,NA
+Caribou Island,Caribou Harbour,Pictou,NA,45.74195,-62.7085666666667,NA
+Cascarette Island,Lennox Passage,Richmond,NA,45.61129,-60.98441,NA
+Center Bay,Tor Bay,Guysborough,NA,45.22565,-61.29616,**Called Tor Bay Center in NSDFA tracking
+Centreville,St. Marys Bay,Digby,NA,44.53624,-66.00172,NA
+Centreville 1,St. Marys Bay,Digby,NA,44.5328,-65.98404,"Formerly Centreville, renamed due to distance from other deployments at Centreville station"
+Chance Harbour,Chance Harbour,Pictou,NA,45.66907,-62.5719,NA
+Charley Rock,St. Margarets Bay,Lunenburg,NA,44.514638,-63.977783,NA
+Cheticamp River,Outer Cheticamp Harbour,Inverness,NA,46.676567,-60.967883,NA
+Church Point 1,St. Marys Bay,Digby,NA,44.32402,-66.13568,NA
+Church Point 2,St. Marys Bay,Digby,NA,44.32015,-66.13507,NA
+Colquhoun Point,Northumberland Strait,Pictou,NA,45.6673166666667,-62.4995333333333,NA
+Cornwallis,Annapolis Basin,Annapolis,NA,44.6694,-65.64478,NA
+Cossitt Point,East Bay,Cape Breton,NA,45.97342,-60.4702,NA
+Deep Basin,Whycocomagh Basin,Inverness,NA,45.94851,-61.12466,NA
+Denys Basin E,Bras d'Or Lakes,Inverness,NA,45.90399,-60.99486,NA
+Denys Basin W,Bras d'Or Lakes,Inverness,NA,45.90103,-61.02866,NA
+Dorts Cove,Chedabucto Bay,Guysborough,NA,45.35905,-61.41966,NA
+Dorts Cove 1,Chedabucto Bay,Guysborough,NA,45.36085,-61.40703,"Some deployments formerly Sandy Cove Chedabucto, renamed to avoid confusion with Sandy Cove St. Marys deployments"
+East Bay,Bras d'Or Lakes,Cape Breton,NA,45.97342,-60.4702,NA
+East Ferry,St. Marys Bay,Digby,NA,44.38944,-66.17638,NA
+East Gibbs Island,Sheet Harbour,Halifax,NA,44.83859,-62.5117,NA
+East River Marina,East River Bay,Lunenburg,NA,44.577628,-64.17112,NA
+Eastern Passage,Arichat Harbour,Richmond,NA,45.49028,-61.03831,NA
+Eddy Cove,Strait of Canso,Guysborough,NA,45.52517,-61.25535,NA
+English Harbour,Tor Bay,Guysborough,NA,45.25007,-61.29866,NA
+Englishtown,St. Anns Harbour,Victoria,NA,46.26374,-60.55493,NA
+Fishermans Island,Whitehead Harbour,Guysborough,0904,45.23997,-61.16838,NA
+Flat Island,Mahone Bay,Lunenburg,NA,44.43344,-64.13161,NA
+Fourchu Rock,Fourchu Bay,Cape Breton,NA,45.731496,-60.209156,NOTE: Right on county boundary line. Double check county after deployment
+Fryingpan Island,Medway River,Queens,NA,44.10013,-64.52783,NA
+Gabion Shoal,Lennox Passage,Richmond,NA,45.6026,-60.90244,NA
+Great Bras d'Or Channel NE-E,Bras d'Or Lakes,Victoria,NA,46.25137,-60.46452,NA
+Great Bras d'Or Channel NE-W,Bras d'Or Lakes,Victoria,NA,46.25548,-60.47119,NA
+Great Bras d'Or Channel SW-E,Bras d'Or Lakes,Victoria,NA,46.11841,-60.62659,NA
+Great Bras d'Or Channel SW-W,Bras d'Or Lakes,Victoria,NA,46.12059,-60.63396,NA
+Gypsum Wharf,Little Narrows,Victoria,NA,46.00276,-60.96011,NA
+Harbour Island,Whitehead Harbour,Guysborough,0839,45.23836,-61.15051,NA
+Hourglass Lake,Hourglass Lake,Digby,NA,44.32794,-65.92824,NA
+Ile du Havre,Havre Boucher,Antigonish,1387,45.69031,-61.51731,NA
+Ingomar,Negro Harbour,Shelburne,NA,43.52435,-65.3555,NA
+Inner Harbour,Chance Harbour,Pictou,1329,45.66912,-62.5725,NA
+Jerseyman Island,Arichat Harbour,Richmond,NA,45.49817,-61.04465,NA
+Jewers Bay,Marie Joseph Harbour,Guysborough,1308,44.96271,-62.08791,NA
+Kavanagh Point,Arichat Harbour,Richmond,0692,45.49824,-61.01931,NA
+Larrys River,Tor Bay,Guysborough,NA,45.20768,-61.35319,NA
+Lawrencetown Beach,Lawrencetown Beach,Halifax,NA,44.63432,-63.33721,NA
+Les Rochers,Bay of Rocks,Richmond,NA,45.52904,-60.92601,NA
+Lesser Hope Rock,Sandy Bay,Queens,NA,43.79937,-64.87902,NA
+Little Bras d'Or Channel,Bras d'Or Lakes,Cape Breton,NA,46.29626,-60.28769,NA
+Little Harbour,Little Harbour,Shelburne,NA,43.71572,-65.0084,NA
+Little Narrows N,Bras d'Or Lakes,Victoria,NA,45.99898,-60.97434,NA
+Little Narrows S,Bras d'Or Lakes,Victoria,NA,45.98641,-60.99028,NA
+Little Rafuse Island,Mahone Bay,Lunenburg,NA,44.4372,-64.25058,NA
+Lobster Bay,Lobster Bay,Yarmouth,NA,43.67902,-65.8978,NA
+Lobster Ledge,Annapolis Basin,Annapolis,NA,44.67821,-65.68335,NA
+Logger 1,St. Marys River,Guysborough,NA,45.07811,-61.93844,NA
+Logger 2,St. Marys River,Guysborough,NA,45.07119,-61.92672,NA
+Logger 3,St. Marys River,Guysborough,NA,45.06789,-61.91406,NA
+Long Beach,St. Marys Bay,Digby,NA,44.40152,-66.16127,NA
+Long Beach 1,St. Marys Bay,Digby,NA,44.38184,-66.17739,NA
+Long Island 1,St. Marys Bay,Digby,NA,44.35039,-66.22467,Includes one former station called Long Island
+Long Island 2,St. Marys Bay,Digby,NA,44.3335,-66.20188,NA
+Long Island 3,St. Marys Bay,Digby,NA,44.3332,-66.24351,NA
+Lower St. Marys River,St. Marys River,Guysborough,NA,45.07119,-61.92672,"Previously 1435, deployed by producer"
+MacRaes Island,West Bay,Inverness,NA,45.7894,-61.075,NA
+Mackerel Island,Pennant Bay,Halifax,NA,44.46307,-63.6774,NA
+Madeline Point,Dover Bay,Guysborough,NA,45.26767,-60.97939,NA
+Madeline Point 1,Dover Bay,Guysborough,NA,45.2658,-60.96085,"Some deployments formerly Madeline Point, renamed due to distance from other deployments at Madeline Point station"
+Malagash,Tatamagouche Bay,Colchester,NA,45.78316,-63.22517,NA
+Margaree River,Outer Margaree Harbour,Inverness,NA,46.4498,-61.1171,NA
+McNabs Point 1,McNabs Bay,Colchester,NA,45.76281,-63.35137,NA
+McNabs Point 2,McNabs Bay,Colchester,NA,45.76282,-63.35156,NA
+McNabs Point 3,McNabs Bay,Colchester,NA,45.76284,-63.35175,NA
+McNutts Island,Shelburne Harbour,Shelburne,NA,43.63075,-65.26076,NA
+Meal Rock,Fishermans Harbour,Guysborough,NA,45.10199,-61.62995,NA
+Medway 1 Bangs Falls 1,Medway River,Queens,NA,44.24569,-64.829580000000007,NA
+Medway 2 Big Cove 1,Medway River,Queens,NA,44.22231,-64.77671,NA
+Medway 3 Greenfield 1,Medway River,Queens,NA,44.27071,-64.84304,NA
+Melmerby Beach,Little Harbour,Pictou,NA,45.6501,-62.52509,2021-12-09: DD changed Waterbody to Little Harbour (from Pictou Harbour)
+Mersey 1 River Road Offshoot 1,Mersey River,Queens,NA,44.0773,-64.7828,NA
+Mersey 2 River Road 2,Mersey River,Queens,NA,44.08319,-64.80947,NA
+Mersey 4 Fish Hatchery Road 1,Mersey River,Queens,NA,44.13824,-64.93057,NA
+Mersey Point,Liverpool Bay,Queens,NA,44.02612,-64.66576,NA
+Mid Bay,St. Marys Bay,Digby,NA,44.38684,-66.14424,NA
+Middle Head,North Bay Ingonish,Victoria,NA,46.66485,-60.37665,NA
+Monks Head,Monks Head Harbour,Antigonish,NA,45.65489,-61.82873,2021-12-09: DD removed apostrophe from Station and changed Waterbody to Monks Head Harbour (from Antigonish Harbour/Malagash)
+Moose Point,Chedabucto Bay,Guysborough,NA,45.3998,-61.42072,NA
+Moose Point 1,Chedabucto Bay,Guysborough,NA,45.395,-61.40951,"Some deployments formerly Moose Point, renamed due to distance from other deployments at Moose Point station"
+Morris Island,Lobster Bay,Yarmouth,NA,43.79083,-65.9114,NA
+Moshers Island,Ships Channel,Lunenburg,NA,44.220358,-64.308519,NA
+Mouse Island,St. Andrews Channel,Cape Breton,NA,46.2051833333333,-60.3952,NA
+Mussel Run,Whitehead Harbour,Guysborough,0839,45.2399,-61.1527,NA
+North Harbour,Aspy Bay,Victoria,NA,46.91123,-60.47478,NA
+North Harbour Beach,Aspy Bay,Victoria,NA,46.926289,-60.448709,NA
+Northeast Branch,Whitehead Harbour,Guysborough,1199,45.27062,-61.135,NA
+Northport,Northumberland Strait,Cumberland,NA,45.9337333333333,-63.8408,NA
+Northwest Branch,Whitehead Harbour,Guysborough,1198,45.28674,-61.16835,NA
+Nyanza Bay E,Bras d'Or Lakes,Victoria,NA,46.06524,-60.89483,NA
+Nyanza Bay W,Bras d'Or Lakes,Victoria,NA,46.06478,-60.90236,NA
+Old Point Channel,Lobster Bay,Yarmouth,NA,43.72101,-65.84573,NA
+Olding Island,Merigomish Harbour,Pictou,NA,45.64393,-62.46812,NA
+Otter Island,Great Bras d'Or Channel,Victoria,NA,46.2081666666667,-60.521016666666704,NA
+Outer Island,Shag Harbour,Shelburne,NA,43.46905,-65.74022,NA
+Owls Head,Owls Head Bay,Halifax,0772,44.73412,-62.81012,2021-12-09: DD removed apostrophe from Station and changed Waterbody to Owls Head Bay (from Owls Head Harbour)
+Peases Island,Lobster Bay,Yarmouth,NA,43.63356,-66.03033,NA
+Pictou Landing,Boat Harbour,Pictou,NA,45.673656,-62.637242,Deployed by Ramon Filguiera for Boat Harbour Monitoring
+Piper Lake,Piper Lake,Pictou,NA,45.34641,-62.66088,NA
+Pirate Harbour,Strait of Canso,Guysborough,NA,45.5893,-61.37944,NA
+Point Michaud,Michaud Cove,Richmond,NA,45.566183,-60.6673,NA
+Pugwash,Pugwash Harbour,Cumberland,NA,45.8672666666667,-63.6968666666667,NA
+Pulp Mill,Strait of Canso,Inverness,NA,45.59586,-61.36382,NA
+Pulp Mill Site 2,Strait of Canso,Inverness,NA,45.5945,-61.36382,NA
+Ram Island,Lobster Bay,Yarmouth,0899,43.68282,-65.83581,NA
+Red Point,Little Harbour,Richmond,NA,45.56086,-60.76126,NA
+Robinson Cove,French Channel,Pictou,1086,45.66,-62.41167,NA
+Rook Island,Chedabucto Bay,Guysborough,NA,45.35088,-61.26811,NA
+Rook Island 1,Chedabucto Bay,Guysborough,NA,45.35232,-61.28687,"Some deployments formerly Rook Island, renamed due to distance from other deployments at Rook Island station"
+Roy Island 1,Little Harbour,Pictou,NA,45.6604,-62.51482,NA
+Roy Island 2,Little Harbour,Pictou,NA,45.66043,-62.51487,NA
+Roy Island 3,Little Harbour,Pictou,NA,45.66046,-62.51492,NA
+Saddle Island,Aspotogan Harbour,Lunenburg,1006,44.50335,-64.0499,NA
+Sand Dunes,Northumberland Strait,Inverness,NA,46.092483,-61.505283,NA
+Sandy Cove,St. Marys Bay,Digby,NA,44.4857,-66.05946,2021-12-13: DD changed station to Sandy Cove St. Mary's (from Sandy Cove St Marys). Changed back to Sandy Cove 2023-03-16
+Seal Cove,Dover Bay,Guysborough,NA,45.25859,-60.99947,NA
+Seal Cove 1,Dover Bay,Guysborough,NA,45.25247,-61.01787,"Some deployments formerly Seal Cove, renamed due to distance from other deployments at Seal Cove station"
+Shad Bay,Shad Bay,Halifax,NA,44.50117,-63.81415,NA
+Ship Harbour Centre,Ship Harbour,Halifax,NA,44.8112666666667,-62.85135,NA
+Ship Harbour East,Ship Harbour,Halifax,NA,44.8034666666667,-62.8313333333333,NA
+Ship Harbour West,Ship Harbour,Halifax,NA,44.81355,-62.8735,NA
+Short Beach,Lamonts Cove,Yarmouth,NA,43.93093,-66.16798,NA
+Shut-In Island,St. Margarets Bay,Halifax,NA,44.55729,-63.95423,NA
+Sissiboo,Sissiboo River,Digby,NA,44.41007,-65.997,NA
+Snake Island,Mahone Bay,Lunenburg,0995,44.54357,-64.17342,NA
+Sober Island,Sober Island Pond,Halifax,1348,44.83884,-62.47107,NA
+Southside,Antigonish Harbour,Antigonish,NA,45.65977,-61.90426,South Side in NSDFA tracking sheet
+Spry Harbour,Spry Bay,Halifax,NA,44.81793,-62.61899,NA
+St. Andrews Channel E,Bras d'Or Lakes,Cape Breton,NA,46.24329,-60.30311,NA
+St. Georges Bay N,St. Georges Bay,Antigonish,NA,45.708033,-61.856533,NA
+St. Georges Bay S,St. Georges Bay,Antigonish,NA,45.6947,-61.850067,NA
+St. Georges Bay W,St. Georges Bay,Antigonish,NA,45.698683,-61.864,NA
+St. Peters Canal N,Bras d'Or Lakes,Richmond,NA,45.65955,-60.86451,NA
+St. Peters Canal S,Bras d'Or Lakes,Richmond,NA,45.65079,-60.87408,NA
+Summerside,Pomquet Harbour,Antigonish,NA,45.61193,-61.78677,NA
+Tanner Island,Tor Bay,Guysborough,NA,45.23018,-61.25339,NA
+Taylors Rock,Port La Tour,Shelburne,NA,43.4683,-65.43304,2021-12-09: DD changed Waterbody to Port La Tour (from Port Latour)
+Taylors Rock 1,Port La Tour,Shelburne,NA,43.46743,-65.42283,NA
+The Basin,Whitehead Harbour,Guysborough,0839,45.23759,-61.14947,NA
+The Basin N,Whitehead Harbour,Guysborough,0839,45.23906,-61.14962,NA
+The Brothers,Lobster Bay,Yarmouth,NA,43.63733,-65.82186,NA
+The Bull,New Harbour,Guysborough,NA,45.15505,-61.39852,NA
+The Channel,Whitehead Harbour,Guysborough,1114,45.24929,-61.14677,NA
+The Jolt,Ram Island Passage,Shelburne,NA,43.685747,-65.01819,NA
+Tickle Island,Chedabucto Bay,Guysborough,NA,45.35493,-61.03793,NA
+Tickle Island 1,Chedabucto Bay,Guysborough,NA,45.3618,-61.044,"Some deployments formerly Tickle Island, renamed due to distance from other deployments at Tickle Island station"
+Tiddville,St. Marys Bay,Digby,NA,44.4055166666667,-66.1563166666667,NA
+Tidnish,Baie Verte,Cumberland,NA,46.0094666666667,-64.0021833333333,NA
+Tilley Point,St. Margarets Bay,Lunenburg,NA,44.54829,-64.01742,NA
+Timmonds Cove,Halifax Harbour,Halifax,NA,44.623361,-63.52105,NA
+Tracadie 1,Tracadie Harbour,Antigonish,NA,45.64391,-61.64759,NA
+Tracadie 2,Tracadie Harbour,Antigonish,NA,45.64404,-61.64776,NA
+Tracadie 3,Tracadie Harbour,Antigonish,NA,45.64417,-61.64789,NA
+Troy Harbour,Strait of Canso,Inverness,NA,45.6818,-61.4451,NA
+Tucker Island,Lobster Bay,Yarmouth,NA,43.71608,-65.94269,NA
+Upper Blandford,Mahone Bay,Lunenburg,NA,44.50887,-64.13297,NA
+Wadden Cove W,Bras d'Or Lakes,Victoria,NA,46.07871,-60.88893,Called CMAR_NY by OTN
+Wallace,Lazy Bay,Cumberland,NA,45.8124166666667,-63.4478666666667,NA
+Waterside,Caribou Harbour,Pictou,1351,45.75625,-62.77031,NA
+Wedgeport,Lobster Bay,Yarmouth,NA,43.69402,-65.95942,NA
+West Bay,Bras d'Or Lakes,Richmond,NA,45.71073,-61.13962,NA
+West Ferry Ramp,Country Harbour,Guysborough,0623,45.1739,-61.70754,NA
+White Island,Whitehead Harbour,Guysborough,0613,45.24649,-61.1562,NA
+White Point Rock,Port Mouton,Queens,NA,43.942859,-64.723337,NA
+Wine Harbour,Wine Harbour,Guysborough,0075,45.07229,-61.86092,NA
+Yankee Cove,Whitehead Harbour,Guysborough,1091,45.23361,-61.15848,NA
+Yarmouth Bar,Careys Cove,Yarmouth,NA,43.83153,-66.17321,NA
